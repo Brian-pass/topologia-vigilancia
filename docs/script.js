@@ -31,6 +31,18 @@ function actualizarEstadisticas() {
     document.getElementById('totalSucursales').textContent = datos.sucursales.length;
 }
 
+// Calcular cantidad de cámaras por central
+function calcularCamarasPorCentral(nombreCentral) {
+    return datos.sucursales
+        .filter(s => s.conectada_a_central === nombreCentral)
+        .reduce((sum, s) => sum + (s.cantidad_camaras || 0), 0);
+}
+
+// Calcular cantidad de cámaras en Cerrito
+function calcularCamarasCerrito() {
+    return datos.equipos_cerrito.reduce((sum, eq) => sum + (eq.cantidad_camaras || 0), 0);
+}
+
 // Llenar tarjetas de servidores regionales
 function llenarServidoresRegionales() {
     const container = document.getElementById('servidoresContainer');
@@ -38,6 +50,9 @@ function llenarServidoresRegionales() {
 
     // Central Principal
     const centralPrincipal = datos.central_principal;
+    const totalCamarasCerrito = calcularCamarasCerrito();
+    const totalCamarasRegionales = datos.centrales_regionales.reduce((sum, c) => sum + calcularCamarasPorCentral(c.nombre), 0);
+    
     const cardPrincipal = document.createElement('div');
     cardPrincipal.className = 'servidor-card cerrito';
     cardPrincipal.innerHTML = `
@@ -46,11 +61,11 @@ function llenarServidoresRegionales() {
         <p><strong>MAC:</strong> ${centralPrincipal.mac}</p>
         <div class="servidor-stats">
             <div class="servidor-stat">
-                <div class="servidor-stat-value">${centralPrincipal.cantidad_nvr}</div>
+                <div class="servidor-stat-value">${datos.nvrs.length}</div>
                 <div class="servidor-stat-label">NVRs</div>
             </div>
             <div class="servidor-stat">
-                <div class="servidor-stat-value">${centralPrincipal.cantidad_camaras_totales}</div>
+                <div class="servidor-stat-value">${totalCamarasCerrito + totalCamarasRegionales}</div>
                 <div class="servidor-stat-label">Cámaras</div>
             </div>
         </div>
@@ -62,17 +77,21 @@ function llenarServidoresRegionales() {
         const card = document.createElement('div');
         const regionClass = central.region.toLowerCase().replace(/\s+/g, '');
         card.className = `servidor-card ${regionClass}`;
+        
+        const cantidadSucursales = datos.sucursales.filter(s => s.conectada_a_central === central.nombre).length;
+        const cantidadCamaras = calcularCamarasPorCentral(central.nombre);
+        
         card.innerHTML = `
             <h4>${central.nombre}</h4>
             <p><strong>Región:</strong> ${central.region}</p>
             <p><strong>IP:</strong> ${central.ip}</p>
             <div class="servidor-stats">
                 <div class="servidor-stat">
-                    <div class="servidor-stat-value">${central.cantidad_sucursales}</div>
+                    <div class="servidor-stat-value">${cantidadSucursales}</div>
                     <div class="servidor-stat-label">Sucursales</div>
                 </div>
                 <div class="servidor-stat">
-                    <div class="servidor-stat-value">${central.cantidad_camaras}</div>
+                    <div class="servidor-stat-value">${cantidadCamaras}</div>
                     <div class="servidor-stat-label">Cámaras</div>
                 </div>
             </div>
@@ -103,18 +122,32 @@ function llenarRegiones() {
 function crearGraficoResumen() {
     const ctx = document.getElementById('pieChart').getContext('2d');
     
-    const datosGrafico = datos.centrales_regionales.map(central => ({
-        label: central.region,
-        value: central.cantidad_camaras,
-        color: central.color
-    }));
-
+    const coloresRegion = {
+        'CERRITO': '#FFFFFF',
+        'San Juan': '#FFFF00',
+        'Santa Cruz': '#0070C0',
+        'Entre Rios': '#FF0000',
+        'Santa Fe': '#00B050'
+    };
+    
+    const datosGrafico = [];
+    
     // Agregar Cerrito
-    const camarasCerrito = datos.equipos_cerrito.reduce((sum, eq) => sum + eq.cantidad_camaras, 0);
+    const camarasCerrito = calcularCamarasCerrito();
     datosGrafico.push({
         label: 'CERRITO',
         value: camarasCerrito,
-        color: '#FFFFFF'
+        color: coloresRegion['CERRITO']
+    });
+    
+    // Agregar centrales regionales
+    datos.centrales_regionales.forEach(central => {
+        const cantidadCamaras = calcularCamarasPorCentral(central.nombre);
+        datosGrafico.push({
+            label: central.region,
+            value: cantidadCamaras,
+            color: coloresRegion[central.region] || '#999999'
+        });
     });
 
     pieChart = new Chart(ctx, {
@@ -124,7 +157,7 @@ function crearGraficoResumen() {
             datasets: [{
                 data: datosGrafico.map(d => d.value),
                 backgroundColor: datosGrafico.map(d => d.color),
-                borderColor: '#fff',
+                borderColor: '#333',
                 borderWidth: 2
             }]
         },
@@ -151,7 +184,15 @@ function crearGraficoBarras() {
     }
 
     // Ordenar por cantidad de cámaras (descendente)
-    sucursalesFiltradas = sucursalesFiltradas.sort((a, b) => b.cantidad_camaras - a.cantidad_camaras);
+    sucursalesFiltradas = sucursalesFiltradas.sort((a, b) => (b.cantidad_camaras || 0) - (a.cantidad_camaras || 0));
+
+    const coloresRegion = {
+        'CERRITO': '#FFFFFF',
+        'San Juan': '#FFFF00',
+        'Santa Cruz': '#0070C0',
+        'Entre Rios': '#FF0000',
+        'Santa Fe': '#00B050'
+    };
 
     barChart = new Chart(ctx, {
         type: 'bar',
@@ -159,9 +200,9 @@ function crearGraficoBarras() {
             labels: sucursalesFiltradas.map(s => s.nombre),
             datasets: [{
                 label: 'Cantidad de Cámaras',
-                data: sucursalesFiltradas.map(s => s.cantidad_camaras),
-                backgroundColor: sucursalesFiltradas.map(s => s.color),
-                borderColor: '#667eea',
+                data: sucursalesFiltradas.map(s => s.cantidad_camaras || 0),
+                backgroundColor: sucursalesFiltradas.map(s => coloresRegion[s.region] || '#999999'),
+                borderColor: '#333',
                 borderWidth: 1
             }]
         },
@@ -191,6 +232,14 @@ function llenarTopologia() {
     const container = document.getElementById('topologyContainer');
     container.innerHTML = '';
 
+    const coloresRegion = {
+        'CERRITO': '#000000',
+        'San Juan': '#FFFF00',
+        'Santa Cruz': '#0070C0',
+        'Entre Rios': '#FF0000',
+        'Santa Fe': '#00B050'
+    };
+
     // Central Principal
     const centralPrincipal = datos.central_principal;
     const nodoPrincipal = document.createElement('div');
@@ -198,7 +247,7 @@ function llenarTopologia() {
     nodoPrincipal.innerHTML = `
         <div class="topology-node-title">🔴 ${centralPrincipal.nombre}</div>
         <div class="topology-node-info"><strong>IP:</strong> ${centralPrincipal.ip}</div>
-        <div class="topology-node-info"><strong>Cámaras Totales:</strong> ${centralPrincipal.cantidad_camaras_totales}</div>
+        <div class="topology-node-info"><strong>Cámaras Totales:</strong> ${calcularCamarasCerrito() + datos.centrales_regionales.reduce((sum, c) => sum + calcularCamarasPorCentral(c.nombre), 0)}</div>
     `;
     container.appendChild(nodoPrincipal);
 
@@ -210,11 +259,11 @@ function llenarTopologia() {
         datos.equipos_cerrito.forEach(eq => {
             const child = document.createElement('div');
             child.className = 'topology-child';
-            child.style.borderLeftColor = '#000';
+            child.style.borderLeftColor = coloresRegion['CERRITO'];
             child.innerHTML = `
                 <div class="topology-node-title">📹 ${eq.nombre}</div>
                 <div class="topology-node-info"><strong>IP:</strong> ${eq.ip}</div>
-                <div class="topology-node-info"><strong>Cámaras:</strong> ${eq.cantidad_camaras}</div>
+                <div class="topology-node-info"><strong>Cámaras:</strong> ${eq.cantidad_camaras || 0}</div>
             `;
             childrenCerrito.appendChild(child);
         });
@@ -226,13 +275,17 @@ function llenarTopologia() {
     datos.centrales_regionales.forEach(central => {
         const nodo = document.createElement('div');
         nodo.className = 'topology-node';
-        nodo.style.borderLeftColor = central.color;
+        nodo.style.borderLeftColor = coloresRegion[central.region] || '#999999';
+        
+        const cantidadSucursales = datos.sucursales.filter(s => s.conectada_a_central === central.nombre).length;
+        const cantidadCamaras = calcularCamarasPorCentral(central.nombre);
+        
         nodo.innerHTML = `
             <div class="topology-node-title">🔵 ${central.nombre}</div>
             <div class="topology-node-info"><strong>Región:</strong> ${central.region}</div>
             <div class="topology-node-info"><strong>IP:</strong> ${central.ip}</div>
-            <div class="topology-node-info"><strong>Sucursales:</strong> ${central.cantidad_sucursales}</div>
-            <div class="topology-node-info"><strong>Cámaras:</strong> ${central.cantidad_camaras}</div>
+            <div class="topology-node-info"><strong>Sucursales:</strong> ${cantidadSucursales}</div>
+            <div class="topology-node-info"><strong>Cámaras:</strong> ${cantidadCamaras}</div>
         `;
         container.appendChild(nodo);
 
@@ -245,12 +298,11 @@ function llenarTopologia() {
             sucursalesDelaCentral.forEach(sucursal => {
                 const child = document.createElement('div');
                 child.className = 'topology-child';
-                child.style.borderLeftColor = sucursal.color;
+                child.style.borderLeftColor = coloresRegion[sucursal.region] || '#999999';
                 child.innerHTML = `
                     <div class="topology-node-title">🏢 ${sucursal.nombre}</div>
-                    <div class="topology-node-info"><strong>NVRs:</strong> ${sucursal.cantidad_nvr}</div>
-                    <div class="topology-node-info"><strong>Cámaras:</strong> ${sucursal.cantidad_camaras}</div>
-                    <div class="topology-node-info"><strong>Vínculo:</strong> ${sucursal.tamaño_vinculo}</div>
+                    <div class="topology-node-info"><strong>NVRs:</strong> ${datos.nvrs.filter(n => n.conectado_a === sucursal.nombre).length}</div>
+                    <div class="topology-node-info"><strong>Cámaras:</strong> ${sucursal.cantidad_camaras || 0}</div>
                 `;
                 children.appendChild(child);
             });
@@ -260,74 +312,34 @@ function llenarTopologia() {
     });
 }
 
-// Llenar tabla
+// Llenar tabla de sucursales
 function llenarTabla() {
-    const container = document.getElementById('tableContainer');
-    
-    const table = document.createElement('table');
-    table.innerHTML = `
-        <thead>
-            <tr>
-                <th>Sucursal</th>
-                <th>Región</th>
-                <th>NVRs</th>
-                <th>Cámaras</th>
-                <th>Vínculo</th>
-                <th>Central</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody">
-        </tbody>
-    `;
-    
-    container.innerHTML = '';
-    container.appendChild(table);
+    const tbody = document.getElementById('tablaSucursales');
+    tbody.innerHTML = '';
 
-    const tableBody = document.getElementById('tableBody');
+    const coloresRegion = {
+        'CERRITO': '#FFFFFF',
+        'San Juan': '#FFFF00',
+        'Santa Cruz': '#0070C0',
+        'Entre Rios': '#FF0000',
+        'Santa Fe': '#00B050'
+    };
+
     datos.sucursales.forEach(sucursal => {
         const row = document.createElement('tr');
+        const cantidadNvrs = datos.nvrs.filter(n => n.conectado_a === sucursal.nombre).length;
+        
         row.innerHTML = `
             <td>${sucursal.nombre}</td>
             <td>${sucursal.region}</td>
-            <td>${sucursal.cantidad_nvr}</td>
-            <td>${sucursal.cantidad_camaras}</td>
-            <td>${sucursal.tamaño_vinculo}</td>
-            <td>${sucursal.conectada_a_central}</td>
+            <td>${cantidadNvrs}</td>
+            <td>${sucursal.cantidad_camaras || 0}</td>
+            <td>${sucursal.tamaño_vinculo || 'N/A'}</td>
+            <td><span class="badge" style="background-color: ${coloresRegion[sucursal.region] || '#999999'}; color: ${sucursal.region === 'San Juan' || sucursal.region === 'CERRITO' ? '#000' : '#fff'};">${sucursal.conectada_a_central}</span></td>
         `;
-        tableBody.appendChild(row);
-    });
-
-    // Buscar
-    document.getElementById('searchInput').addEventListener('keyup', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const rows = tableBody.querySelectorAll('tr');
-        rows.forEach(row => {
-            const text = row.textContent.toLowerCase();
-            row.style.display = text.includes(searchTerm) ? '' : 'none';
-        });
+        tbody.appendChild(row);
     });
 }
-
-// Manejo de tabs
-document.querySelectorAll('.tab-button').forEach(button => {
-    button.addEventListener('click', () => {
-        // Remover clase active de todos los botones y panes
-        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-
-        // Agregar clase active al botón y pane seleccionado
-        button.classList.add('active');
-        const tabId = button.getAttribute('data-tab');
-        document.getElementById(tabId).classList.add('active');
-
-        // Redimensionar gráficos si es necesario
-        if (tabId === 'graficos' && barChart) {
-            barChart.resize();
-        } else if (tabId === 'resumen' && pieChart) {
-            pieChart.resize();
-        }
-    });
-});
 
 // Cargar datos al iniciar
 cargarDatos();
