@@ -147,7 +147,7 @@ function crearGraficoResumen() {
     const ctx = document.getElementById('pieChart').getContext('2d');
     
     const coloresRegion = {
-        'CERRITO': '#FFFFFF',
+        'CERRITO': '#8B00FF',
         'San Juan': '#FFFF00',
         'Santa Cruz': '#0070C0',
         'Entre Rios': '#FF0000',
@@ -206,12 +206,26 @@ function crearGraficoBarras() {
     if (regionSeleccionada) {
         sucursalesFiltradas = datos.sucursales.filter(s => s.region === regionSeleccionada);
     }
+    
+    // Agregar equipos locales de Cerrito si se selecciona o si es "todas las regiones"
+    let equiposCerritoFiltrados = [];
+    if (!regionSeleccionada || regionSeleccionada === 'CERRITO') {
+        equiposCerritoFiltrados = datos.equipos_cerrito.map(eq => ({
+            nombre: eq.nombre,
+            cantidad_camaras: eq.cantidad_camaras,
+            region: 'CERRITO',
+            color: '#8B00FF'
+        }));
+    }
+    
+    // Combinar sucursales y equipos de Cerrito
+    let datosGrafico = [...sucursalesFiltradas, ...equiposCerritoFiltrados];
 
     // Ordenar por cantidad de cámaras (descendente)
-    sucursalesFiltradas = sucursalesFiltradas.sort((a, b) => (b.cantidad_camaras || 0) - (a.cantidad_camaras || 0));
+    datosGrafico = datosGrafico.sort((a, b) => (b.cantidad_camaras || 0) - (a.cantidad_camaras || 0));
 
     const coloresRegion = {
-        'CERRITO': '#FFFFFF',
+        'CERRITO': '#8B00FF',
         'San Juan': '#FFFF00',
         'Santa Cruz': '#0070C0',
         'Entre Rios': '#FF0000',
@@ -221,11 +235,11 @@ function crearGraficoBarras() {
     barChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: sucursalesFiltradas.map(s => s.nombre),
+            labels: datosGrafico.map(s => s.nombre),
             datasets: [{
                 label: 'Cantidad de Cámaras',
-                data: sucursalesFiltradas.map(s => s.cantidad_camaras || 0),
-                backgroundColor: sucursalesFiltradas.map(s => coloresRegion[s.region] || '#999999'),
+                data: datosGrafico.map(s => s.cantidad_camaras || 0),
+                backgroundColor: datosGrafico.map(s => coloresRegion[s.region] || '#999999'),
                 borderColor: '#333',
                 borderWidth: 1
             }]
@@ -257,7 +271,7 @@ function llenarTopologia() {
     container.innerHTML = '';
 
     const coloresRegion = {
-        'CERRITO': '#000000',
+        'CERRITO': '#8B00FF',
         'San Juan': '#FFFF00',
         'Santa Cruz': '#0070C0',
         'Entre Rios': '#FF0000',
@@ -300,6 +314,7 @@ function llenarTopologia() {
         const nodo = document.createElement('div');
         nodo.className = 'topology-node';
         nodo.style.borderLeftColor = coloresRegion[central.region] || '#999999';
+        nodo.style.borderColor = coloresRegion[central.region] || '#999999';
         
         const cantidadSucursales = datos.sucursales.filter(s => s.conectada_a_central === central.nombre).length;
         const cantidadCamaras = calcularCamarasPorCentral(central.nombre);
@@ -342,13 +357,28 @@ function llenarTabla() {
     tbody.innerHTML = '';
 
     const coloresRegion = {
-        'CERRITO': '#FFFFFF',
+        'CERRITO': '#8B00FF',
         'San Juan': '#FFFF00',
         'Santa Cruz': '#0070C0',
         'Entre Rios': '#FF0000',
         'Santa Fe': '#00B050'
     };
 
+    // Agregar equipos locales de Cerrito
+    datos.equipos_cerrito.forEach(eq => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${eq.nombre}</td>
+            <td>CERRITO</td>
+            <td>-</td>
+            <td>${eq.cantidad_camaras || 0}</td>
+            <td>-</td>
+            <td><span class="badge" style="background-color: ${coloresRegion['CERRITO']}; color: #fff;">HikCentral Cerrito</span></td>
+        `;
+        tbody.appendChild(row);
+    });
+
+    // Agregar sucursales
     datos.sucursales.forEach(sucursal => {
         const row = document.createElement('tr');
         const cantidadNvrs = datos.nvrs.filter(n => n.conectado_a === sucursal.nombre).length;
@@ -359,10 +389,38 @@ function llenarTabla() {
             <td>${cantidadNvrs}</td>
             <td>${sucursal.cantidad_camaras || 0}</td>
             <td>${sucursal.tamaño_vinculo || 'N/A'}</td>
-            <td><span class="badge" style="background-color: ${coloresRegion[sucursal.region] || '#999999'}; color: ${sucursal.region === 'San Juan' || sucursal.region === 'CERRITO' ? '#000' : '#fff'};">${sucursal.conectada_a_central}</span></td>
+            <td><span class="badge" style="background-color: ${coloresRegion[sucursal.region] || '#999999'}; color: ${sucursal.region === 'San Juan' ? '#000' : '#fff'};">${sucursal.conectada_a_central}</span></td>
         `;
         tbody.appendChild(row);
     });
+    
+    // Agregar funcionalidad de búsqueda
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('keyup', filtrarTabla);
+    }
+}
+
+// Filtrar tabla de búsqueda
+function filtrarTabla() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toLowerCase();
+    const table = document.querySelector('table tbody');
+    const rows = table.getElementsByTagName('tr');
+    
+    for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td');
+        let found = false;
+        
+        for (let j = 0; j < cells.length; j++) {
+            if (cells[j].textContent.toLowerCase().includes(filter)) {
+                found = true;
+                break;
+            }
+        }
+        
+        rows[i].style.display = found ? '' : 'none';
+    }
 }
 
 // Cargar datos al iniciar
