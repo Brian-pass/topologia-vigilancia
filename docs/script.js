@@ -8,9 +8,30 @@ async function cargarDatos() {
         const response = await fetch('data.json');
         datos = await response.json();
         inicializarUI();
+        configurarTabs();
     } catch (error) {
         console.error('Error cargando datos:', error);
     }
+}
+
+// Configurar funcionalidad de tabs
+function configurarTabs() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tabName = button.getAttribute('data-tab');
+            
+            // Remover clase active de todos los botones y panes
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+            
+            // Agregar clase active al botón y pane seleccionado
+            button.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        });
+    });
 }
 
 // Inicializar la interfaz
@@ -54,18 +75,20 @@ function llenarServidoresRegionales() {
     const totalCamarasRegionales = datos.centrales_regionales.reduce((sum, c) => sum + calcularCamarasPorCentral(c.nombre), 0);
     
     const cardPrincipal = document.createElement('div');
-    cardPrincipal.className = 'servidor-card cerrito';
+    cardPrincipal.className = 'servidor-card';
+    cardPrincipal.style.borderColor = '#8B00FF';
+    cardPrincipal.style.borderLeftColor = '#8B00FF';
     cardPrincipal.innerHTML = `
         <h4>${centralPrincipal.nombre}</h4>
         <p><strong>IP:</strong> ${centralPrincipal.ip}</p>
         <p><strong>MAC:</strong> ${centralPrincipal.mac}</p>
         <div class="servidor-stats">
             <div class="servidor-stat">
-                <div class="servidor-stat-value">${datos.nvrs.length}</div>
+                <div class="servidor-stat-value">${datos.equipos_cerrito.length}</div>
                 <div class="servidor-stat-label">NVRs</div>
             </div>
             <div class="servidor-stat">
-                <div class="servidor-stat-value">${totalCamarasCerrito + totalCamarasRegionales}</div>
+                <div class="servidor-stat-value">${totalCamarasCerrito}</div>
                 <div class="servidor-stat-label">Cámaras</div>
             </div>
         </div>
