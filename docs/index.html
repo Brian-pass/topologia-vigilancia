@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Topología - HikCentral</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>Visualizador de Topología</h1>
+                <p>Red de Videovigilancia HikCentral</p>
+            </div>
+        </header>
+
+        <!-- Estadísticas Principales -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <h3>Total de Cámaras</h3>
+                <p class="stat-value" id="totalCamaras">0</p>
+                <span class="stat-label">Distribuidas en el sistema</span>
+            </div>
+            <div class="stat-card">
+                <h3>Centrales Activas</h3>
+                <p class="stat-value" id="totalCentrales">0</p>
+                <span class="stat-label">Servidores conectados</span>
+            </div>
+            <div class="stat-card">
+                <h3>Sucursales Totales</h3>
+                <p class="stat-value" id="totalSucursales">0</p>
+                <span class="stat-label">Puntos de vigilancia</span>
+            </div>
+        </section>
+
+        <!-- Tabs Navigation -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="resumen">Resumen</button>
+            <button class="tab-button" data-tab="graficos">Gráficos</button>
+            <button class="tab-button" data-tab="topologia">Topología</button>
+            <button class="tab-button" data-tab="tabla">Tabla</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Resumen Tab -->
+            <div id="resumen" class="tab-pane active">
+                <div class="section-title">Distribución de Cámaras por Región</div>
+                <div id="chartContainer" class="chart-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+                
+                <div class="section-title" style="margin-top: 40px;">Servidores Regionales</div>
+                <div id="servidoresContainer" class="servidores-grid"></div>
+            </div>
+
+            <!-- Gráficos Tab -->
+            <div id="graficos" class="tab-pane">
+                <div class="section-title">Cámaras por Sucursal</div>
+                <div class="filter-container">
+                    <label for="regionFilter">Filtrar por Región:</label>
+                    <select id="regionFilter">
+                        <option value="">Todas las regiones</option>
+                    </select>
+                </div>
+                <div id="barChartContainer" class="chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Topología Tab -->
+            <div id="topologia" class="tab-pane">
+                <div class="section-title">Estructura de Red</div>
+                <div id="topologyContainer" class="topology-container"></div>
+            </div>
+
+            <!-- Tabla Tab -->
+            <div id="tabla" class="tab-pane">
+                <div class="section-title">Tabla de Sucursales</div>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Buscar sucursal...">
+                </div>
+                <div id="tableContainer" class="table-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

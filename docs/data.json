@@ -1,0 +1,205 @@
+{
+  "camaras": [
+    {
+      "nombre": "CAM-CERRITO-001",
+      "ip": "192.168.1.10",
+      "modelo": "DS-2CD2143G0-I",
+      "sn": "SN50001",
+      "mac": "00:AA:BB:CC:DD:01",
+      "firmware": "V5.4.0",
+      "conectada_a_nvr": "NVR-CERRITO-001",
+      "region": "CERRITO"
+    },
+    {
+      "nombre": "CAM-CERRITO-002",
+      "ip": "192.168.1.11",
+      "modelo": "DS-2CD2143G0-I",
+      "sn": "SN50002",
+      "mac": "00:AA:BB:CC:DD:02",
+      "firmware": "V5.4.0",
+      "conectada_a_nvr": "NVR-CERRITO-001",
+      "region": "CERRITO"
+    },
+    {
+      "nombre": "CAM-SJ-001",
+      "ip": "192.168.10.10",
+      "modelo": "DS-2CD2143G0-I",
+      "sn": "SN54321",
+      "mac": "00:AA:BB:CC:DD:EE",
+      "firmware": "V5.4.0",
+      "conectada_a_nvr": "NVR-SJ-001",
+      "region": "San Juan"
+    },
+    {
+      "nombre": "CAM-SJ-002",
+      "ip": "192.168.10.11",
+      "modelo": "DS-2CD2143G0-I",
+      "sn": "SN54322",
+      "mac": "00:AA:BB:CC:DD:EF",
+      "firmware": "V5.4.0",
+      "conectada_a_nvr": "NVR-SJ-001",
+      "region": "San Juan"
+    },
+    {
+      "nombre": "CAM-SJ-003",
+      "ip": "192.168.10.12",
+      "modelo": "DS-2CD2143G0-I",
+      "sn": "SN54323",
+      "mac": "00:AA:BB:CC:DD:F0",
+      "firmware": "V5.4.0",
+      "conectada_a_nvr": "NVR-SJ-001",
+      "region": "San Juan"
+    },
+    {
+      "nombre": "CAM-SJ-004",
+      "ip": "192.168.10.13",
+      "modelo": "DS-2CD2143G0-I",
+      "sn": "SN54324",
+      "mac": "00:AA:BB:CC:DD:F1",
+      "firmware": "V5.4.0",
+      "conectada_a_nvr": "NVR-SJ-001",
+      "region": "San Juan"
+    },
+    {
+      "nombre": "CAM-SC-001",
+      "ip": "192.168.20.10",
+      "modelo": "DS-2CD2143G0-I",
+      "sn": "SN54325",
+      "mac": "00:AA:BB:CC:DD:F2",
+      "firmware": "V5.4.0",
+      "conectada_a_nvr": "NVR-SC-001",
+      "region": "Santa Cruz"
+    }
+  ],
+  "nvrs": [
+    {
+      "nombre": "NVR-CERRITO-001",
+      "ip": "192.168.1.1",
+      "modelo": "DS-7608NI-Q1/8P",
+      "sn": "SN12340",
+      "mac": "00:11:22:33:44:50",
+      "firmware": "V4.0.0",
+      "cantidad_camaras": 2,
+      "conectado_a": "HikCentral Cerrito",
+      "tipo_conexion": "Central Principal",
+      "region": "CERRITO"
+    },
+    {
+      "nombre": "NVR-SJ-001",
+      "ip": "192.168.10.1",
+      "modelo": "DS-7608NI-Q1/8P",
+      "sn": "SN12345",
+      "mac": "00:11:22:33:44:55",
+      "firmware": "V4.0.0",
+      "cantidad_camaras": 4,
+      "conectado_a": "Las Lajas",
+      "tipo_conexion": "Sucursal",
+      "region": "San Juan"
+    },
+    {
+      "nombre": "NVR-SC-001",
+      "ip": "192.168.20.1",
+      "modelo": "DS-7616NI-Q2/16P",
+      "sn": "SN12346",
+      "mac": "00:11:22:33:44:56",
+      "firmware": "V4.0.0",
+      "cantidad_camaras": 1,
+      "conectado_a": "NVR Chalten",
+      "tipo_conexion": "Sucursal",
+      "region": "Santa Cruz"
+    }
+  ],
+  "equipos_cerrito": [
+    {
+      "nombre": "NVR-CERRITO-001",
+      "ip": "192.168.1.1",
+      "modelo": "DS-7608NI-Q1/8P",
+      "sn": "SN12340",
+      "mac": "00:11:22:33:44:50",
+      "firmware": "V4.0.0",
+      "cantidad_camaras": 2,
+      "region": "CERRITO"
+    }
+  ],
+  "sucursales": [
+    {
+      "nombre": "Las Lajas",
+      "cantidad_nvr": 1,
+      "cantidad_camaras": 4,
+      "tamaño_vinculo": "10 Mbps",
+      "conectada_a_central": "HikCentral San Juan",
+      "region": "San Juan",
+      "color": "#FFFF00"
+    },
+    {
+      "nombre": "NVR Chalten",
+      "cantidad_nvr": 1,
+      "cantidad_camaras": 1,
+      "tamaño_vinculo": "20 Mbps",
+      "conectada_a_central": "HikCentral Santa Cruz",
+      "region": "Santa Cruz",
+      "color": "#0070C0"
+    },
+    {
+      "nombre": "Marquesado",
+      "cantidad_nvr": 0,
+      "cantidad_camaras": 0,
+      "tamaño_vinculo": "10 Mbps",
+      "conectada_a_central": "HikCentral San Juan",
+      "region": "San Juan",
+      "color": "#FFFF00"
+    }
+  ],
+  "centrales_regionales": [
+    {
+      "nombre": "HikCentral San Juan",
+      "ip": "192.168.2.100",
+      "mac": "00:1A:2B:3C:4D:5F",
+      "cantidad_sucursales": 2,
+      "cantidad_camaras": 4,
+      "region": "San Juan",
+      "conectada_a_central_principal": "HikCentral Cerrito",
+      "color": "#FFFF00"
+    },
+    {
+      "nombre": "HikCentral Santa Cruz",
+      "ip": "192.168.3.100",
+      "mac": "00:1A:2B:3C:4D:60",
+      "cantidad_sucursales": 1,
+      "cantidad_camaras": 1,
+      "region": "Santa Cruz",
+      "conectada_a_central_principal": "HikCentral Cerrito",
+      "color": "#0070C0"
+    },
+    {
+      "nombre": "HikCentral Entre Rios",
+      "ip": "192.168.4.100",
+      "mac": "00:1A:2B:3C:4D:61",
+      "cantidad_sucursales": 0,
+      "cantidad_camaras": 0,
+      "region": "Entre Rios",
+      "conectada_a_central_principal": "HikCentral Cerrito",
+      "color": "#FF0000"
+    },
+    {
+      "nombre": "HikCentral Rosario",
+      "ip": "192.168.5.100",
+      "mac": "00:1A:2B:3C:4D:62",
+      "cantidad_sucursales": 0,
+      "cantidad_camaras": 0,
+      "region": "Santa Fe",
+      "conectada_a_central_principal": "HikCentral Cerrito",
+      "color": "#00B050"
+    }
+  ],
+  "central_principal": {
+    "nombre": "HikCentral Cerrito",
+    "ip": "192.168.1.100",
+    "mac": "00:1A:2B:3C:4D:5E",
+    "cantidad_nvr": 3,
+    "cantidad_centrales_conectadas": 4,
+    "cantidad_camaras_totales": 7,
+    "region": "CERRITO",
+    "color": "#FFFFFF"
+  }
+}
