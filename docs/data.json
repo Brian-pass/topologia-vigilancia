@@ -17,45 +17,45 @@
                            "nombre":  "Las Lajas",
                            "region":  "Entre Rios",
                            "tamaño_vinculo":  "10 Mbps",
-                           "cantidad_nvr":  10,
+                           "cantidad_nvr":  1,
                            "color":  "#FF0000",
-                           "cantidad_camaras":  null
+                           "cantidad_camaras":  4
                        },
                        {
                            "conectada_a_central":  "HikCentral Santa Cruz",
                            "nombre":  "NVR Chalten",
                            "region":  "Santa Cruz",
                            "tamaño_vinculo":  "20 Mbps",
-                           "cantidad_nvr":  10,
+                           "cantidad_nvr":  1,
                            "color":  "#0070C0",
-                           "cantidad_camaras":  null
+                           "cantidad_camaras":  1
                        },
                        {
                            "conectada_a_central":  "HikCentral Entre Rios",
                            "nombre":  "Marquesado",
                            "region":  "Entre Rios",
                            "tamaño_vinculo":  "10 Mbps",
-                           "cantidad_nvr":  10,
+                           "cantidad_nvr":  1,
                            "color":  "#FF0000",
-                           "cantidad_camaras":  null
+                           "cantidad_camaras":  5
                        },
                        {
                            "conectada_a_central":  "HikCentral San Juan",
                            "nombre":  "Posito",
                            "region":  "San Juan",
                            "tamaño_vinculo":  "10 Mbps",
-                           "cantidad_nvr":  10,
+                           "cantidad_nvr":  1,
                            "color":  "#FFFF00",
-                           "cantidad_camaras":  null
+                           "cantidad_camaras":  4
                        },
                        {
                            "conectada_a_central":  "HikCentral Rosario",
                            "nombre":  "Matriz",
                            "region":  "Santa Fe",
                            "tamaño_vinculo":  "20 Mbps",
-                           "cantidad_nvr":  10,
+                           "cantidad_nvr":  1,
                            "color":  "#00B050",
-                           "cantidad_camaras":  null
+                           "cantidad_camaras":  10
                        }
                    ],
     "centrales_regionales":  [
@@ -63,8 +63,8 @@
                                      "color":  "#FFFF00",
                                      "conectada_a_central_principal":  "HikCentral Cerrito",
                                      "mac":  "00:1A:2B:3C:4D:5F",
-                                     "cantidad_camaras":  null,
-                                     "cantidad_sucursales":  7,
+                                     "cantidad_camaras":  4,
+                                     "cantidad_sucursales":  1,
                                      "nombre":  "HikCentral San Juan",
                                      "region":  "San Juan",
                                      "ip":  "192.168.2.100"
@@ -73,8 +73,8 @@
                                      "color":  "#0070C0",
                                      "conectada_a_central_principal":  "HikCentral Cerrito",
                                      "mac":  "00:1A:2B:3C:4D:60",
-                                     "cantidad_camaras":  null,
-                                     "cantidad_sucursales":  7,
+                                     "cantidad_camaras":  1,
+                                     "cantidad_sucursales":  1,
                                      "nombre":  "HikCentral Santa Cruz",
                                      "region":  "Santa Cruz",
                                      "ip":  "192.168.3.100"
@@ -83,7 +83,7 @@
                                      "color":  "#FF0000",
                                      "conectada_a_central_principal":  "HikCentral Cerrito",
                                      "mac":  "00:1A:2B:3C:4D:61",
-                                     "cantidad_camaras":  null,
+                                     "cantidad_camaras":  9,
                                      "cantidad_sucursales":  2,
                                      "nombre":  "HikCentral Entre Rios",
                                      "region":  "Entre Rios",
@@ -93,15 +93,15 @@
                                      "color":  "#00B050",
                                      "conectada_a_central_principal":  "HikCentral Cerrito",
                                      "mac":  "00:1A:2B:3C:4D:62",
-                                     "cantidad_camaras":  null,
-                                     "cantidad_sucursales":  7,
+                                     "cantidad_camaras":  10,
+                                     "cantidad_sucursales":  1,
                                      "nombre":  "HikCentral Rosario",
                                      "region":  "Santa Fe",
                                      "ip":  "192.168.5.100"
                                  }
                              ],
     "central_principal":  {
-                              "cantidad_camaras_totales":  null,
+                              "cantidad_camaras_totales":  26,
                               "cantidad_centrales_conectadas":  4,
                               "color":  "#FFFFFF",
                               "nombre":  "HikCentral Cerrito",
@@ -406,7 +406,7 @@
                      "conectado_a":  "NVR Chalten",
                      "mac":  "00:11:22:33:44:56",
                      "tipo_conexion":  "Sucursal",
-                     "cantidad_camaras":  8,
+                     "cantidad_camaras":  1,
                      "sn":  "SN12346"
                  },
                  {
