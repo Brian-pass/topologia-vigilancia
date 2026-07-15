@@ -75,8 +75,9 @@ function llenarServidoresRegionales() {
     // Centrales Regionales
     datos.centrales_regionales.forEach(central => {
         const card = document.createElement('div');
-        const regionClass = central.region.toLowerCase().replace(/\s+/g, '');
-        card.className = `servidor-card ${regionClass}`;
+        card.className = 'servidor-card';
+        card.style.borderColor = central.color || '#999999';
+        card.style.borderLeftColor = central.color || '#999999';
         
         const cantidadSucursales = datos.sucursales.filter(s => s.conectada_a_central === central.nombre).length;
         const cantidadCamaras = calcularCamarasPorCentral(central.nombre);
