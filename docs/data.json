@@ -6,444 +6,1950 @@
                                 "mac":  "00:11:22:33:44:50",
                                 "firmware":  "V4.0.0",
                                 "ip":  "192.168.1.1",
-                                "cantidad_camaras":  2,
+                                "cantidad_camaras":  0,
                                 "region":  "CERRITO",
                                 "sn":  "SN12340"
+                            },
+                            {
+                                "nombre":  "BUNKER_01",
+                                "modelo":  "DS-9032HUHI-K8",
+                                "mac":  null,
+                                "firmware":  "V4.20.2 build 210705",
+                                "ip":  "172.30.8.241",
+                                "cantidad_camaras":  0,
+                                "region":  "CERRITO",
+                                "sn":  "DS-9032HUHI-K83220200326CCWRE28341190WCVU"
+                            },
+                            {
+                                "nombre":  "BUNKER_02",
+                                "modelo":  "DS-9032HUHI-K8",
+                                "mac":  null,
+                                "firmware":  "V4.20.2 build 210705",
+                                "ip":  "172.30.8.242",
+                                "cantidad_camaras":  0,
+                                "region":  "CERRITO",
+                                "sn":  "DS-9032HUHI-K83220200326CCWRE28341188WCVU"
+                            },
+                            {
+                                "nombre":  "BUNKER_03",
+                                "modelo":  "DS-9032HUHI-K8",
+                                "mac":  null,
+                                "firmware":  "V4.20.2 build 210705",
+                                "ip":  "172.30.8.243",
+                                "cantidad_camaras":  0,
+                                "region":  "CERRITO",
+                                "sn":  "DS-9032HUHI-K83220200326CCWRE28341192WCVU"
+                            },
+                            {
+                                "nombre":  "BUNKER_04",
+                                "modelo":  "DS-9032HUHI-K8",
+                                "mac":  null,
+                                "firmware":  "V4.20.2 build 210705",
+                                "ip":  "172.30.8.244",
+                                "cantidad_camaras":  0,
+                                "region":  "CERRITO",
+                                "sn":  "DS-9032HUHI-K83220200326CCWRE28341196WCVU"
+                            },
+                            {
+                                "nombre":  "BSC_SUC_Cerrito_BSAS",
+                                "modelo":  "DS-9632NI-M8",
+                                "mac":  null,
+                                "firmware":  null,
+                                "ip":  "172.30.8.180",
+                                "cantidad_camaras":  0,
+                                "region":  "CERRITO",
+                                "sn":  "DS-9632NI-M81620230602CCRRAB9886320WCVU"
+                            },
+                            {
+                                "nombre":  "San Fernando",
+                                "modelo":  "DS-9632NI-M8",
+                                "mac":  null,
+                                "firmware":  null,
+                                "ip":  "181.104.58.218",
+                                "cantidad_camaras":  0,
+                                "region":  "CERRITO",
+                                "sn":  "DS-9632NI-M81620240116CCRRAZ3969790WCVU"
+                            },
+                            {
+                                "nombre":  "NVR_CORPO_05",
+                                "modelo":  "iDS-9664NXI-I8/X(B)",
+                                "mac":  null,
+                                "firmware":  null,
+                                "ip":  null,
+                                "cantidad_camaras":  0,
+                                "region":  "CERRITO",
+                                "sn":  null
+                            },
+                            {
+                                "nombre":  "NVR_CORPO_04",
+                                "modelo":  "iDS-9664NXI-I8/X(B)",
+                                "mac":  "ec:c8:9c:be:87:a7",
+                                "firmware":  "V4.50.000 build 210125",
+                                "ip":  "172.30.8.205",
+                                "cantidad_camaras":  0,
+                                "region":  "CERRITO",
+                                "sn":  "iDS-9664NXI-I8/X(B)1620210221CCRRF57337281WCVU"
+                            },
+                            {
+                                "nombre":  "NVR_CORPO_03",
+                                "modelo":  "iDS-9664NXI-I8/X(B)",
+                                "mac":  "ec:c8:9c:be:87:a5",
+                                "firmware":  "V4.50.000 build 210125",
+                                "ip":  "172.30.8.204",
+                                "cantidad_camaras":  0,
+                                "region":  "CERRITO",
+                                "sn":  "iDS-9664NXI-I8/X(B)1620210221CCRRF57337279WCVU"
+                            },
+                            {
+                                "nombre":  "NVR_CORPO_02",
+                                "modelo":  "iDS-9664NXI-I8/X(B)",
+                                "mac":  null,
+                                "firmware":  null,
+                                "ip":  null,
+                                "cantidad_camaras":  0,
+                                "region":  "CERRITO",
+                                "sn":  null
+                            },
+                            {
+                                "nombre":  "NVR_CORPO_01",
+                                "modelo":  "iDS-9664NXI-I8/X(B)",
+                                "mac":  "ec:c8:9c:be:87:ab",
+                                "firmware":  "V4.50.000 build 210125",
+                                "ip":  "172.30.8.201",
+                                "cantidad_camaras":  33,
+                                "region":  "CERRITO",
+                                "sn":  "iDS-9664NXI-I8/X(B)1620210221CCRRF57337285WCVU"
+                            },
+                            {
+                                "nombre":  "RACK_ASJ",
+                                "modelo":  "DS-7608NI-K2/8P",
+                                "mac":  "98:df:82:ba:33:a3",
+                                "firmware":  "V4.71.005 build 220524",
+                                "ip":  "172.30.8.157",
+                                "cantidad_camaras":  0,
+                                "region":  "CERRITO",
+                                "sn":  "DS-7608NI-K2/8P0820200115CCRRE12022382WCVU"
+                            },
+                            {
+                                "nombre":  "NVR_BSJ_SUC_BS_AS",
+                                "modelo":  "DS-9632NI-M8",
+                                "mac":  null,
+                                "firmware":  null,
+                                "ip":  "172.30.10.93",
+                                "cantidad_camaras":  0,
+                                "region":  "CERRITO",
+                                "sn":  "DS-9664NI-I81620190801CCRRD45701553WCVU"
                             }
                         ],
     "sucursales":  [
                        {
-                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "conectada_a_central":  "HikCentral San Juan",
                            "nombre":  "Las Lajas",
-                           "region":  "Entre Rios",
-                           "tamaño_vinculo":  "10 Mbps",
-                           "cantidad_nvr":  1,
-                           "color":  "#FF0000",
-                           "cantidad_camaras":  4
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Marquesado",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Valle Fertil",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Matriz4",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Rivadavia",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Barreal",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Sarmiento",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Tribunales",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "CentroPymeMza",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Buenos Aires",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Rodeo del Medio",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Lujan de Cuyo",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Agencia Rodeo",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Albardon",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Matriz3",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Jachal",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Matriz2",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Matriz1",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Las Heras",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Libertador",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Hiper",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Civico",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Rawson",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Caucete",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Pocito",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Maipu",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral San Juan",
+                           "nombre":  "Anexo",
+                           "region":  "San Juan",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FFFF00",
+                           "cantidad_camaras":  0
                        },
                        {
                            "conectada_a_central":  "HikCentral Santa Cruz",
                            "nombre":  "NVR Chalten",
                            "region":  "Santa Cruz",
-                           "tamaño_vinculo":  "20 Mbps",
-                           "cantidad_nvr":  1,
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
                            "color":  "#0070C0",
-                           "cantidad_camaras":  1
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "05 - Buenos Aires - Cerrito",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "30 - Gob Gregores",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "Gcia Sistemas",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "00 - Anexo",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "Recuento Tesorería",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "00 - Casa Matriz",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "01 - Agencia 1",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "00 - Lobby ATM Neutrales",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "85 - 28 de Noviembre",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "70 - Pto Santa Cruz",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "60 - Pto San Julian",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "55 - Pto Deseado",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "50 - Pico Truncado",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "45 - Las Heras",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "41 - Los Antiguos",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "40 - Perito Moreno",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "25 - El Calafate",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "20 - Piedrabuena",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "15 - Rio Turbio",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Santa Cruz",
+                           "nombre":  "10 - Caleta Olivia",
+                           "region":  "Santa Cruz",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#0070C0",
+                           "cantidad_camaras":  0
                        },
                        {
                            "conectada_a_central":  "HikCentral Entre Rios",
-                           "nombre":  "Marquesado",
+                           "nombre":  "Colonia Avellaneda",
                            "region":  "Entre Rios",
-                           "tamaño_vinculo":  "10 Mbps",
-                           "cantidad_nvr":  1,
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
                            "color":  "#FF0000",
-                           "cantidad_camaras":  5
+                           "cantidad_camaras":  0
                        },
                        {
-                           "conectada_a_central":  "HikCentral San Juan",
-                           "nombre":  "Posito",
-                           "region":  "San Juan",
-                           "tamaño_vinculo":  "10 Mbps",
-                           "cantidad_nvr":  1,
-                           "color":  "#FFFF00",
-                           "cantidad_camaras":  4
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Strobel",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "StaAnita",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "VillaDominguez",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "VilaMantero",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "El Pingo",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "VillaDelRosario",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "VillaClara",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Aranguren",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "AldeaBrasilera",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Nogoya",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Enrique Carbo",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Uruguay3",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Pueblo Belgrano",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Cons. Gral. Educación",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "PUERTO YERUA",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Los Conquistadores",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "1° DE MAYO",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "San Justo",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "General Racedo",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "SAN GUSTAVO",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "COLONIA AYUI",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "La Criolla",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Aldea Maria Luisa",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Conscripto Bernardi",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Concordia Tribunales",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Colonia Elias",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Gilbert",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Pronunciamiento",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Villa Zorraquin",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "EstanciaGrande",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Ceibas",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "San Benito -suc",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Ctro. Conv. Villaguay",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Pueblo Brugo",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Alcaraz",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Don Bosco",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "080-Parana Peatonal",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Sistemas",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "La Bianca 227",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "San Jaime",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Gualeguaychu",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Paso del Parana",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Las Cuevas",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "San Jose",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Planta Caudales Parana",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Ubajay -",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Jubileo",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "Curtiembre",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "003-ConcordiaCentro-01",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "003-ConcordiaCentro-02",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "219-Va Urquiza",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "211-El Solar",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "027-Santa Elena",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "005-Uruguay Plaza -2",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "065-Parque",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "005-UruguayPlaza1",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "224 - Piedras Blancas",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "058-Tabosi",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "RosarioDelTala",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "217 - Casa de Gobierno",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "084-Goya",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "200 - Santa Ana",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "049-Ibicuy",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "004-Federal",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "008-Crespo",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "014 - La Paz",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Entre Rios",
+                           "nombre":  "191 - Parque Industrial",
+                           "region":  "Entre Rios",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#FF0000",
+                           "cantidad_camaras":  0
                        },
                        {
                            "conectada_a_central":  "HikCentral Rosario",
-                           "nombre":  "Matriz",
+                           "nombre":  "000-AnexoRosario",
                            "region":  "Santa Fe",
-                           "tamaño_vinculo":  "20 Mbps",
-                           "cantidad_nvr":  1,
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
                            "color":  "#00B050",
-                           "cantidad_camaras":  10
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-056-PAVON",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-069-PqueIndAvellaneda",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-068-PARQUE INDUSTRIAL FUNES",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-066-MARIA SUSANA",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-064-GUADALUPE NORTE",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-057-NUEVO TORINO",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-061-CARLOS PELLEGRINI",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-058-FORTIN OLMOS",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-067-EUSEBIA Y CAROLINA",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-053-HOSPITAL ITURRASPE",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-063-GREOGRIA PEREZ DE DENIS",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-060-ALVEAR",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-059-SOLDINI",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-062-CHAPUY",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "SUC716-P IND SAUCE VIEJO",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "SUC706-SAUCE VIEJO",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "SUC596-ANEXO SANTO TOME",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "SUC569-MONTE VERA",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "SUC560-RECREO",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "SUC550-SA PEREYRA",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "SUC457-CARRERAS",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "SUC081-PUEBLO ESTHER",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "SUC080-VILLA CAÑAS",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "SUC044-SARGENTO CABRAL",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-055-AMENABAR",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-054-SERODINO",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-052-PUJATO",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-050-MOISES VILLE",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-051-TACURAL",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-045-Grutly",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "suc476-FLBeltran",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "suc030-Rufino",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "suc009-Oroño-2",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "suc009-Oroño",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-044-Ambrosetti",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-035-ArroyoLeyes",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-065-PavonArriba",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "suc566-Frontera",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "ATMN-034-Lehmann",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "suc048-Arteaga",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
+                       },
+                       {
+                           "conectada_a_central":  "HikCentral Rosario",
+                           "nombre":  "000-MegaLobby",
+                           "region":  "Santa Fe",
+                           "tamaño_vinculo":  "0 Mbps",
+                           "cantidad_nvr":  0,
+                           "color":  "#00B050",
+                           "cantidad_camaras":  0
                        }
                    ],
     "centrales_regionales":  [
                                  {
                                      "color":  "#FFFF00",
                                      "conectada_a_central_principal":  "HikCentral Cerrito",
-                                     "mac":  "00:1A:2B:3C:4D:5F",
-                                     "cantidad_camaras":  4,
-                                     "cantidad_sucursales":  1,
+                                     "mac":  "2.1.0",
+                                     "cantidad_camaras":  0,
+                                     "cantidad_sucursales":  27,
                                      "nombre":  "HikCentral San Juan",
                                      "region":  "San Juan",
-                                     "ip":  "192.168.2.100"
+                                     "ip":  "172.20.4.110"
                                  },
                                  {
                                      "color":  "#0070C0",
                                      "conectada_a_central_principal":  "HikCentral Cerrito",
-                                     "mac":  "00:1A:2B:3C:4D:60",
-                                     "cantidad_camaras":  1,
-                                     "cantidad_sucursales":  1,
+                                     "mac":  "1.7.1",
+                                     "cantidad_camaras":  0,
+                                     "cantidad_sucursales":  21,
                                      "nombre":  "HikCentral Santa Cruz",
                                      "region":  "Santa Cruz",
-                                     "ip":  "192.168.3.100"
+                                     "ip":  "172.26.113.101"
                                  },
                                  {
                                      "color":  "#FF0000",
                                      "conectada_a_central_principal":  "HikCentral Cerrito",
-                                     "mac":  "00:1A:2B:3C:4D:61",
-                                     "cantidad_camaras":  9,
-                                     "cantidad_sucursales":  2,
+                                     "mac":  "1.7.1",
+                                     "cantidad_camaras":  0,
+                                     "cantidad_sucursales":  68,
                                      "nombre":  "HikCentral Entre Rios",
                                      "region":  "Entre Rios",
-                                     "ip":  "192.168.4.100"
+                                     "ip":  "172.28.1.117"
                                  },
                                  {
                                      "color":  "#00B050",
                                      "conectada_a_central_principal":  "HikCentral Cerrito",
-                                     "mac":  "00:1A:2B:3C:4D:62",
-                                     "cantidad_camaras":  10,
-                                     "cantidad_sucursales":  1,
+                                     "mac":  "3.0.1",
+                                     "cantidad_camaras":  0,
+                                     "cantidad_sucursales":  42,
                                      "nombre":  "HikCentral Rosario",
                                      "region":  "Santa Fe",
-                                     "ip":  "192.168.5.100"
+                                     "ip":  "172.18.2.20"
                                  }
                              ],
     "central_principal":  {
-                              "cantidad_camaras_totales":  26,
+                              "cantidad_camaras_totales":  33,
                               "cantidad_centrales_conectadas":  4,
                               "color":  "#FFFFFF",
                               "nombre":  "HikCentral Cerrito",
-                              "mac":  "00:1A:2B:3C:4D:5E",
+                              "mac":  "2.1.0",
                               "region":  "CERRITO",
-                              "cantidad_nvr":  6,
-                              "ip":  "192.168.1.100"
+                              "cantidad_nvr":  0,
+                              "ip":  "172.30.8.235"
                           },
     "camaras":  [
                     {
-                        "nombre":  "CAM-CERRITO-001",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:01",
-                        "firmware":  "V5.4.0",
-                        "ip":  "192.168.1.10",
-                        "conectada_a_nvr":  "NVR-CERRITO-001",
+                        "nombre":  "P03 Viamonte a Cordoba",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.214",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
                         "region":  "CERRITO",
-                        "sn":  "SN50001"
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-CERRITO-002",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:02",
-                        "firmware":  "V5.4.0",
-                        "ip":  "192.168.1.11",
-                        "conectada_a_nvr":  "NVR-CERRITO-001",
+                        "nombre":  "P18 Sala Tecnica",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.17",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
                         "region":  "CERRITO",
-                        "sn":  "SN50002"
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SJ-001",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:EE",
-                        "firmware":  "V5.4.0",
-                        "ip":  "192.168.10.10",
-                        "conectada_a_nvr":  "NVR-SJ-001",
-                        "region":  "Entre Rios",
-                        "sn":  "SN54321"
+                        "nombre":  "IPCamera 03",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.180",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SJ-002",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:EF",
-                        "firmware":  "V5.4.0",
-                        "ip":  "192.168.10.11",
-                        "conectada_a_nvr":  "NVR-SJ-001",
-                        "region":  "Entre Rios",
-                        "sn":  "SN54322"
+                        "nombre":  "Sala Tecnica Viamonte",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "10.31.8.120",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SJ-003",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F0",
-                        "firmware":  "V5.4.0",
-                        "ip":  "192.168.10.12",
-                        "conectada_a_nvr":  "NVR-SJ-001",
-                        "region":  "Entre Rios",
-                        "sn":  "SN54323"
+                        "nombre":  "Sala Tecnica Cordoba",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "10.31.8.81",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SJ-004",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F1",
-                        "firmware":  "V5.4.0",
-                        "ip":  "192.168.10.13",
-                        "conectada_a_nvr":  "NVR-SJ-001",
-                        "region":  "Entre Rios",
-                        "sn":  "SN54324"
+                        "nombre":  "Planta Frio 4to Piso",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.223",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SC-001",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F2",
-                        "firmware":  "V5.4.0",
-                        "ip":  "192.168.20.10",
-                        "conectada_a_nvr":  "NVR-SC-001",
-                        "region":  "Santa Cruz",
-                        "sn":  "SN54325"
+                        "nombre":  "P03 Viamonte Medio",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.215",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM1",
-                        "modelo":  "DS-2CD2156G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F7",
-                        "firmware":  "V5.4.5",
-                        "ip":  "172.10.30.10",
-                        "conectada_a_nvr":  "NVR-ER-01",
-                        "region":  "Entre Rios",
-                        "sn":  "SN33567"
+                        "nombre":  "P18 Viamonte a Cordoba",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.48",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM2",
-                        "modelo":  "DS-2CD2156G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F8",
-                        "firmware":  "V5.4.5",
-                        "ip":  "172.10.30.11",
-                        "conectada_a_nvr":  "NVR-ER-01",
-                        "region":  "Entre Rios",
-                        "sn":  "SN33568"
+                        "nombre":  "P18 Ingreso Ascensor VIP",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.53",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM3",
-                        "modelo":  "DS-2CD2156G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F9",
-                        "firmware":  "V5.4.5",
-                        "ip":  "172.10.30.12",
-                        "conectada_a_nvr":  "NVR-ER-01",
-                        "region":  "Entre Rios",
-                        "sn":  "SN33569"
+                        "nombre":  "P18 Cordoba a Viamonte",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.54",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM4",
-                        "modelo":  "DS-2CD2156G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F10",
-                        "firmware":  "V5.4.5",
-                        "ip":  "172.10.30.13",
-                        "conectada_a_nvr":  "NVR-ER-01",
-                        "region":  "Entre Rios",
-                        "sn":  "SN33570"
+                        "nombre":  "Piso 18 Viamonte fondo",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.56",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM5",
-                        "modelo":  "DS-2CD2156G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F11",
-                        "firmware":  "V5.4.5",
-                        "ip":  "172.10.30.14",
-                        "conectada_a_nvr":  "NVR-ER-01",
-                        "region":  "Entre Rios",
-                        "sn":  "SN33571"
+                        "nombre":  "Piso 8 Ala viamonte",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.81",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SJ-005",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F12",
-                        "firmware":  "V5.4.0",
-                        "ip":  "192.168.10.14",
-                        "conectada_a_nvr":  "NVR-SJ-002",
-                        "region":  "San Juan",
-                        "sn":  "SN54373"
+                        "nombre":  "P08 Ingreso Viamonte",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.82",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SJ-006",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F13",
-                        "firmware":  "V5.4.1",
-                        "ip":  "192.168.10.15",
-                        "conectada_a_nvr":  "NVR-SJ-002",
-                        "region":  "San Juan",
-                        "sn":  "SN54374"
+                        "nombre":  "Piso 8 Ingreso Cordoba",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.86",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SJ-007",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F14",
-                        "firmware":  "V5.4.2",
-                        "ip":  "192.168.10.16",
-                        "conectada_a_nvr":  "NVR-SJ-002",
-                        "region":  "San Juan",
-                        "sn":  "SN54375"
+                        "nombre":  "Piso 8 Ala Cordoba",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.88",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SJ-008",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F15",
-                        "firmware":  "V5.4.3",
-                        "ip":  "192.168.10.17",
-                        "conectada_a_nvr":  "NVR-SJ-002",
-                        "region":  "San Juan",
-                        "sn":  "SN54376"
+                        "nombre":  "Piso 8 Viamonte - 360",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.89",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SF-01",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F16",
-                        "firmware":  "V5.4.4",
-                        "ip":  "192.168.10.18",
-                        "conectada_a_nvr":  "NVR-SF-test",
-                        "region":  "Santa Fe",
-                        "sn":  "SN54377"
+                        "nombre":  "Piso 8 Medio",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.90",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SF-02",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F17",
-                        "firmware":  "V5.4.5",
-                        "ip":  "192.168.10.19",
-                        "conectada_a_nvr":  "NVR-SF-test",
-                        "region":  "Santa Fe",
-                        "sn":  "SN54378"
+                        "nombre":  "P03 SUM",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.211",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SF-03",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F18",
-                        "firmware":  "V5.4.6",
-                        "ip":  "192.168.10.20",
-                        "conectada_a_nvr":  "NVR-SF-test",
-                        "region":  "Santa Fe",
-                        "sn":  "SN54379"
+                        "nombre":  "P03 Salida Viamonte",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.216",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SF-04",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F19",
-                        "firmware":  "V5.4.7",
-                        "ip":  "192.168.10.21",
-                        "conectada_a_nvr":  "NVR-SF-test",
-                        "region":  "Santa Fe",
-                        "sn":  "SN54380"
+                        "nombre":  "P03 Cordoba a Viamonte",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.217",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SF-05",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F20",
-                        "firmware":  "V5.4.8",
-                        "ip":  "192.168.10.22",
-                        "conectada_a_nvr":  "NVR-SF-test",
-                        "region":  "Santa Fe",
-                        "sn":  "SN54381"
+                        "nombre":  "P03 Anfiteatro",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.218",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SF-06",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F21",
-                        "firmware":  "V5.4.9",
-                        "ip":  "192.168.10.23",
-                        "conectada_a_nvr":  "NVR-SF-test",
-                        "region":  "Santa Fe",
-                        "sn":  "SN54382"
+                        "nombre":  "P03 Salida Cordoba",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.219",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SF-07",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F22",
-                        "firmware":  "V5.4.10",
-                        "ip":  "192.168.10.24",
-                        "conectada_a_nvr":  "NVR-SF-test",
-                        "region":  "Santa Fe",
-                        "sn":  "SN54383"
+                        "nombre":  "P03 Ingreso Sala Cordoba",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.220",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SF-08",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F23",
-                        "firmware":  "V5.4.11",
-                        "ip":  "192.168.10.25",
-                        "conectada_a_nvr":  "NVR-SF-test",
-                        "region":  "Santa Fe",
-                        "sn":  "SN54384"
+                        "nombre":  "P03 Salida Archivero",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.222",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SF-09",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F24",
-                        "firmware":  "V5.4.12",
-                        "ip":  "192.168.10.26",
-                        "conectada_a_nvr":  "NVR-SF-test",
-                        "region":  "Santa Fe",
-                        "sn":  "SN54385"
+                        "nombre":  "P03 Archivero",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.224",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     },
                     {
-                        "nombre":  "CAM-SF-10",
-                        "modelo":  "DS-2CD2143G0-I",
-                        "mac":  "00:AA:BB:CC:DD:F25",
-                        "firmware":  "V5.4.13",
-                        "ip":  "192.168.10.27",
-                        "conectada_a_nvr":  "NVR-SF-test",
-                        "region":  "Santa Fe",
-                        "sn":  "SN54386"
+                        "nombre":  "P03 Sala Tableros",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.228",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
+                    },
+                    {
+                        "nombre":  "P05 Ingreso Cocina",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.57",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
+                    },
+                    {
+                        "nombre":  "P05 Cordoba a Viamonte",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.24",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
+                    },
+                    {
+                        "nombre":  "P03 Sala Tecnica",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.59",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
+                    },
+                    {
+                        "nombre":  "P07 Ingreso Cordoba",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.109",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
+                    },
+                    {
+                        "nombre":  "P07 Fondo Cordoba",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.110",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
+                    },
+                    {
+                        "nombre":  "P07 Viamonte Ingreso",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.67",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
+                    },
+                    {
+                        "nombre":  "P07 Fondo Viamonte",
+                        "modelo":  null,
+                        "mac":  null,
+                        "firmware":  null,
+                        "ip":  "172.30.8.114",
+                        "conectada_a_nvr":  "NVR_CORPO_01",
+                        "region":  "CERRITO",
+                        "sn":  null
                     }
                 ],
     "nvrs":  [
-                 {
-                     "modelo":  "DS-7608NI-Q1/8P",
-                     "region":  "CERRITO",
-                     "nombre":  "NVR-CERRITO-001",
-                     "firmware":  "V4.0.0",
-                     "ip":  "192.168.1.1",
-                     "conectado_a":  "HikCentral Cerrito",
-                     "mac":  "00:11:22:33:44:50",
-                     "tipo_conexion":  "Central Principal",
-                     "cantidad_camaras":  2,
-                     "sn":  "SN12340"
-                 },
-                 {
-                     "modelo":  "DS-7608NI-Q1/8P",
-                     "region":  "Entre Rios",
-                     "nombre":  "NVR-SJ-001",
-                     "firmware":  "V4.0.0",
-                     "ip":  "192.168.10.1",
-                     "conectado_a":  "Las Lajas",
-                     "mac":  "00:11:22:33:44:55",
-                     "tipo_conexion":  "Sucursal",
-                     "cantidad_camaras":  4,
-                     "sn":  "SN12345"
-                 },
-                 {
-                     "modelo":  "DS-7616NI-Q2/16P",
-                     "region":  "Santa Cruz",
-                     "nombre":  "NVR-SC-001",
-                     "firmware":  "V4.0.0",
-                     "ip":  "192.168.20.1",
-                     "conectado_a":  "NVR Chalten",
-                     "mac":  "00:11:22:33:44:56",
-                     "tipo_conexion":  "Sucursal",
-                     "cantidad_camaras":  1,
-                     "sn":  "SN12346"
-                 },
-                 {
-                     "modelo":  "DS-7608NI-Q1/8P",
-                     "region":  "Entre Rios",
-                     "nombre":  "NVR-ER-01",
-                     "firmware":  "V4.0.0",
-                     "ip":  "172.10.30.1",
-                     "conectado_a":  "Marquesado",
-                     "mac":  "00:11:22:33:44:57",
-                     "tipo_conexion":  "Sucursal",
-                     "cantidad_camaras":  5,
-                     "sn":  "SN12347"
-                 },
-                 {
-                     "modelo":  "DS-7608NI-Q1/8P",
-                     "region":  "San Juan",
-                     "nombre":  "NVR-SJ-002",
-                     "firmware":  "V4.0.1",
-                     "ip":  "192.168.10.2",
-                     "conectado_a":  "Posito",
-                     "mac":  "00:11:22:33:44:58",
-                     "tipo_conexion":  "Sucursal",
-                     "cantidad_camaras":  4,
-                     "sn":  "SN12348"
-                 },
-                 {
-                     "modelo":  "DS-7608NI-Q1/8P",
-                     "region":  "Santa Fe",
-                     "nombre":  "NVR-SF-test",
-                     "firmware":  "V4.0.2",
-                     "ip":  "192.168.10.3",
-                     "conectado_a":  "Matriz",
-                     "mac":  "00:11:22:33:44:59",
-                     "tipo_conexion":  "Sucursal",
-                     "cantidad_camaras":  10,
-                     "sn":  "SN12349"
-                 }
+
              ]
 }
