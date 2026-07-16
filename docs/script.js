@@ -127,15 +127,18 @@ function llenarServidoresRegionales() {
 // Llenar opciones de filtro de regiones
 function llenarRegiones() {
     const select = document.getElementById('regionFilter');
-    const regiones = new Set(datos.sucursales.map(s => s.region));
+    const regiones = new Set();
     
-    regiones.forEach(region => {
+    datos.sucursales.forEach(s => regiones.add(s.region));
+    regiones.add('CERRITO');
+    
+    Array.from(regiones).sort().forEach(region => {
         const option = document.createElement('option');
         option.value = region;
         option.textContent = region;
         select.appendChild(option);
     });
-
+    
     select.addEventListener('change', () => {
         if (barChart) barChart.destroy();
         crearGraficoBarras();
@@ -158,22 +161,26 @@ function crearGraficoResumen() {
     
     // Agregar Cerrito
     const camarasCerrito = calcularCamarasCerrito();
-    datosGrafico.push({
-        label: 'CERRITO',
-        value: camarasCerrito,
-        color: coloresRegion['CERRITO']
-    });
+    if (camarasCerrito > 0) {
+        datosGrafico.push({
+            label: 'CERRITO',
+            value: camarasCerrito,
+            color: coloresRegion['CERRITO']
+        });
+    }
     
     // Agregar centrales regionales
     datos.centrales_regionales.forEach(central => {
-        const cantidadCamaras = calcularCamarasPorCentral(central.nombre);
-        datosGrafico.push({
-            label: central.region,
-            value: cantidadCamaras,
-            color: coloresRegion[central.region] || '#999999'
-        });
+        const camaras = calcularCamarasPorCentral(central.nombre);
+        if (camaras > 0) {
+            datosGrafico.push({
+                label: central.region,
+                value: camaras,
+                color: coloresRegion[central.region] || '#999999'
+            });
+        }
     });
-
+    
     pieChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -181,7 +188,7 @@ function crearGraficoResumen() {
             datasets: [{
                 data: datosGrafico.map(d => d.value),
                 backgroundColor: datosGrafico.map(d => d.color),
-                borderColor: '#333',
+                borderColor: '#fff',
                 borderWidth: 2
             }]
         },
@@ -255,20 +262,21 @@ function crearGraficoBarras() {
             },
             scales: {
                 x: {
-                    beginAtZero: true,
-                    ticks: {
-                        stepSize: 1
-                    }
+                    beginAtZero: true
                 }
             }
         }
     });
 }
 
-// Llenar topología
+// NUEVA TOPOLOGÍA JERÁRQUICA EXPANDIBLE
 function llenarTopologia() {
     const container = document.getElementById('topologyContainer');
     container.innerHTML = '';
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+    container.style.alignItems = 'center';
+    container.style.gap = '30px';
 
     const coloresRegion = {
         'CERRITO': '#8B00FF',
@@ -278,76 +286,215 @@ function llenarTopologia() {
         'Santa Fe': '#00B050'
     };
 
-    // Central Principal
+    // Central Principal (Cerrito) - Centro
     const centralPrincipal = datos.central_principal;
-    const nodoPrincipal = document.createElement('div');
-    nodoPrincipal.className = 'topology-node principal';
-    nodoPrincipal.innerHTML = `
-        <div class="topology-node-title">🔴 ${centralPrincipal.nombre}</div>
-        <div class="topology-node-info"><strong>IP:</strong> ${centralPrincipal.ip}</div>
-        <div class="topology-node-info"><strong>Cámaras Totales:</strong> ${calcularCamarasCerrito() + datos.centrales_regionales.reduce((sum, c) => sum + calcularCamarasPorCentral(c.nombre), 0)}</div>
+    const cerritoDiv = document.createElement('div');
+    cerritoDiv.style.textAlign = 'center';
+    cerritoDiv.style.marginBottom = '40px';
+    
+    const cerritoCard = document.createElement('div');
+    cerritoCard.style.cssText = `
+        border: 3px solid #8B00FF;
+        border-radius: 8px;
+        padding: 20px;
+        background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+        max-width: 300px;
+        cursor: pointer;
+        transition: all 0.3s ease;
     `;
-    container.appendChild(nodoPrincipal);
+    cerritoCard.onmouseover = () => cerritoCard.style.boxShadow = '0 8px 16px rgba(139, 0, 255, 0.3)';
+    cerritoCard.onmouseout = () => cerritoCard.style.boxShadow = 'none';
+    
+    const totalCamarasCerrito = calcularCamarasCerrito();
+    cerritoCard.innerHTML = `
+        <h3 style="color: #8B00FF; margin: 0 0 10px 0;">${centralPrincipal.nombre}</h3>
+        <p style="margin: 5px 0;"><strong>IP:</strong> ${centralPrincipal.ip}</p>
+        <p style="margin: 5px 0;"><strong>NVRs Locales:</strong> ${datos.equipos_cerrito.length}</p>
+        <p style="margin: 5px 0;"><strong>Cámaras Locales:</strong> ${totalCamarasCerrito}</p>
+    `;
+    cerritoDiv.appendChild(cerritoCard);
+    container.appendChild(cerritoDiv);
 
-    // Equipos de Cerrito
-    if (datos.equipos_cerrito.length > 0) {
-        const childrenCerrito = document.createElement('div');
-        childrenCerrito.className = 'topology-children';
-        
-        datos.equipos_cerrito.forEach(eq => {
-            const child = document.createElement('div');
-            child.className = 'topology-child';
-            child.style.borderLeftColor = coloresRegion['CERRITO'];
-            child.innerHTML = `
-                <div class="topology-node-title">📹 ${eq.nombre}</div>
-                <div class="topology-node-info"><strong>IP:</strong> ${eq.ip}</div>
-                <div class="topology-node-info"><strong>Cámaras:</strong> ${eq.cantidad_camaras || 0}</div>
-            `;
-            childrenCerrito.appendChild(child);
-        });
-        
-        container.appendChild(childrenCerrito);
-    }
+    // Centrales Regionales - Lado a lado
+    const centralesDiv = document.createElement('div');
+    centralesDiv.style.cssText = `
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        width: 100%;
+        margin-top: 20px;
+    `;
 
-    // Centrales Regionales
     datos.centrales_regionales.forEach(central => {
-        const nodo = document.createElement('div');
-        nodo.className = 'topology-node';
-        nodo.style.borderLeftColor = coloresRegion[central.region] || '#999999';
-        nodo.style.borderColor = coloresRegion[central.region] || '#999999';
-        
+        const centralDiv = document.createElement('div');
+        centralDiv.style.cssText = `
+            border: 3px solid ${coloresRegion[central.region]};
+            border-radius: 8px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        `;
+        centralDiv.onmouseover = () => centralDiv.style.boxShadow = `0 8px 16px rgba(${hexToRgb(coloresRegion[central.region])}, 0.3)`;
+        centralDiv.onmouseout = () => centralDiv.style.boxShadow = 'none';
+
         const cantidadSucursales = datos.sucursales.filter(s => s.conectada_a_central === central.nombre).length;
         const cantidadCamaras = calcularCamarasPorCentral(central.nombre);
-        
-        nodo.innerHTML = `
-            <div class="topology-node-title">🔵 ${central.nombre}</div>
-            <div class="topology-node-info"><strong>Región:</strong> ${central.region}</div>
-            <div class="topology-node-info"><strong>IP:</strong> ${central.ip}</div>
-            <div class="topology-node-info"><strong>Sucursales:</strong> ${cantidadSucursales}</div>
-            <div class="topology-node-info"><strong>Cámaras:</strong> ${cantidadCamaras}</div>
-        `;
-        container.appendChild(nodo);
 
-        // Sucursales de esta central
-        const sucursalesDelaCentral = datos.sucursales.filter(s => s.conectada_a_central === central.nombre);
-        if (sucursalesDelaCentral.length > 0) {
-            const children = document.createElement('div');
-            children.className = 'topology-children';
-            
-            sucursalesDelaCentral.forEach(sucursal => {
-                const child = document.createElement('div');
-                child.className = 'topology-child';
-                child.style.borderLeftColor = coloresRegion[sucursal.region] || '#999999';
-                child.innerHTML = `
-                    <div class="topology-node-title">🏢 ${sucursal.nombre}</div>
-                    <div class="topology-node-info"><strong>NVRs:</strong> ${datos.nvrs.filter(n => n.conectado_a === sucursal.nombre).length}</div>
-                    <div class="topology-node-info"><strong>Cámaras:</strong> ${sucursal.cantidad_camaras || 0}</div>
-                `;
-                children.appendChild(child);
-            });
-            
-            container.appendChild(children);
-        }
+        centralDiv.innerHTML = `
+            <h3 style="color: ${coloresRegion[central.region]}; margin: 0 0 10px 0; cursor: pointer;" class="toggle-central" data-central="${central.nombre}">
+                ▶ ${central.nombre}
+            </h3>
+            <p style="margin: 5px 0;"><strong>Región:</strong> ${central.region}</p>
+            <p style="margin: 5px 0;"><strong>IP:</strong> ${central.ip}</p>
+            <p style="margin: 5px 0;"><strong>Sucursales:</strong> ${cantidadSucursales}</p>
+            <p style="margin: 5px 0;"><strong>Cámaras:</strong> ${cantidadCamaras}</p>
+            <div class="sucursales-list" data-central="${central.nombre}" style="display: none; margin-top: 15px; border-top: 1px solid #ddd; padding-top: 15px;"></div>
+        `;
+
+        // Agregar evento para expandir sucursales
+        const toggle = centralDiv.querySelector('.toggle-central');
+        toggle.addEventListener('click', () => {
+            const sucursalesList = centralDiv.querySelector('.sucursales-list');
+            if (sucursalesList.style.display === 'none') {
+                sucursalesList.style.display = 'block';
+                toggle.textContent = '▼ ' + central.nombre;
+                llenarSucursalesExpandibles(central.nombre, sucursalesList, coloresRegion);
+            } else {
+                sucursalesList.style.display = 'none';
+                toggle.textContent = '▶ ' + central.nombre;
+            }
+        });
+
+        centralesDiv.appendChild(centralDiv);
+    });
+
+    container.appendChild(centralesDiv);
+}
+
+// Función auxiliar para convertir hex a rgb
+function hexToRgb(hex) {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '0, 0, 0';
+}
+
+// Función para llenar sucursales expandibles
+function llenarSucursalesExpandibles(nombreCentral, container, coloresRegion) {
+    container.innerHTML = '';
+    const sucursalesDelaCentral = datos.sucursales.filter(s => s.conectada_a_central === nombreCentral);
+
+    sucursalesDelaCentral.forEach(sucursal => {
+        const sucursalDiv = document.createElement('div');
+        sucursalDiv.style.cssText = `
+            border-left: 3px solid ${coloresRegion[sucursal.region]};
+            padding-left: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        `;
+
+        const nvrCount = datos.nvrs.filter(n => n.conectado_a === sucursal.nombre).length;
+        sucursalDiv.innerHTML = `
+            <div style="cursor: pointer; font-weight: bold; color: ${coloresRegion[sucursal.region]};" class="toggle-sucursal" data-sucursal="${sucursal.nombre}">
+                ▶ ${sucursal.nombre}
+            </div>
+            <div style="margin-top: 5px; font-size: 0.9em;">
+                <p style="margin: 2px 0;"><strong>NVRs:</strong> ${nvrCount}</p>
+                <p style="margin: 2px 0;"><strong>Cámaras:</strong> ${sucursal.cantidad_camaras || 0}</p>
+            </div>
+            <div class="nvrs-list" data-sucursal="${sucursal.nombre}" style="display: none; margin-top: 10px; border-top: 1px solid #ddd; padding-top: 10px;"></div>
+        `;
+
+        const toggleSucursal = sucursalDiv.querySelector('.toggle-sucursal');
+        toggleSucursal.addEventListener('click', () => {
+            const nvrsList = sucursalDiv.querySelector('.nvrs-list');
+            if (nvrsList.style.display === 'none') {
+                nvrsList.style.display = 'block';
+                toggleSucursal.textContent = '▼ ' + sucursal.nombre;
+                llenarNvrsExpandibles(sucursal.nombre, nvrsList, coloresRegion);
+            } else {
+                nvrsList.style.display = 'none';
+                toggleSucursal.textContent = '▶ ' + sucursal.nombre;
+            }
+        });
+
+        container.appendChild(sucursalDiv);
+    });
+}
+
+// Función para llenar NVRs expandibles
+function llenarNvrsExpandibles(nombreSucursal, container, coloresRegion) {
+    container.innerHTML = '';
+    const nvrsDelaSucursal = datos.nvrs.filter(n => n.conectado_a === nombreSucursal);
+
+    nvrsDelaSucursal.forEach(nvr => {
+        const nvrDiv = document.createElement('div');
+        nvrDiv.style.cssText = `
+            border-left: 3px solid #666;
+            padding-left: 10px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+        `;
+
+        const camarasCount = datos.camaras.filter(c => c.conectada_a_nvr === nvr.nombre).length;
+        nvrDiv.innerHTML = `
+            <div style="cursor: pointer; font-weight: bold; color: #333;" class="toggle-nvr" data-nvr="${nvr.nombre}">
+                ▶ ${nvr.nombre}
+            </div>
+            <div style="margin-top: 5px; font-size: 0.85em;">
+                <p style="margin: 2px 0;"><strong>IP:</strong> ${nvr.ip}</p>
+                <p style="margin: 2px 0;"><strong>Cámaras:</strong> ${camarasCount}</p>
+            </div>
+            <div class="camaras-list" data-nvr="${nvr.nombre}" style="display: none; margin-top: 8px; border-top: 1px solid #ddd; padding-top: 8px;"></div>
+        `;
+
+        const toggleNvr = nvrDiv.querySelector('.toggle-nvr');
+        toggleNvr.addEventListener('click', () => {
+            const camarasList = nvrDiv.querySelector('.camaras-list');
+            if (camarasList.style.display === 'none') {
+                camarasList.style.display = 'block';
+                toggleNvr.textContent = '▼ ' + nvr.nombre;
+                llenarCamarasExpandibles(nvr.nombre, camarasList);
+            } else {
+                camarasList.style.display = 'none';
+                toggleNvr.textContent = '▶ ' + nvr.nombre;
+            }
+        });
+
+        container.appendChild(nvrDiv);
+    });
+}
+
+// Función para llenar cámaras expandibles
+function llenarCamarasExpandibles(nombreNvr, container) {
+    container.innerHTML = '';
+    const camarasDelNvr = datos.camaras.filter(c => c.conectada_a_nvr === nombreNvr);
+
+    camarasDelNvr.forEach(camara => {
+        const camaraDiv = document.createElement('div');
+        camaraDiv.style.cssText = `
+            border-left: 3px solid #999;
+            padding-left: 10px;
+            margin-bottom: 6px;
+            padding: 6px;
+            background: #efefef;
+            border-radius: 3px;
+            font-size: 0.85em;
+        `;
+
+        camaraDiv.innerHTML = `
+            <p style="margin: 2px 0; font-weight: bold;">${camara.nombre}</p>
+            <p style="margin: 2px 0;"><strong>IP:</strong> ${camara.ip}</p>
+            <p style="margin: 2px 0;"><strong>Modelo:</strong> ${camara.modelo}</p>
+            <p style="margin: 2px 0;"><strong>MAC:</strong> ${camara.mac}</p>
+        `;
+
+        container.appendChild(camaraDiv);
     });
 }
 
@@ -364,19 +511,20 @@ function llenarTabla() {
         'Santa Fe': '#00B050'
     };
 
-    // Agregar equipos locales de Cerrito
-    datos.equipos_cerrito.forEach(eq => {
+    // Agregar equipos locales de Cerrito como una fila consolidada
+    if (datos.equipos_cerrito.length > 0) {
+        const totalCamarasCerrito = datos.equipos_cerrito.reduce((sum, eq) => sum + (eq.cantidad_camaras || 0), 0);
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${eq.nombre}</td>
+            <td><strong>Equipos Locales Cerrito</strong></td>
             <td>CERRITO</td>
-            <td>-</td>
-            <td>${eq.cantidad_camaras || 0}</td>
+            <td>${datos.equipos_cerrito.length}</td>
+            <td>${totalCamarasCerrito}</td>
             <td>-</td>
             <td><span class="badge" style="background-color: ${coloresRegion['CERRITO']}; color: #fff;">HikCentral Cerrito</span></td>
         `;
         tbody.appendChild(row);
-    });
+    }
 
     // Agregar sucursales
     datos.sucursales.forEach(sucursal => {
