@@ -1,0 +1,184 @@
+$excelFile = "C:\Users\bamarilla\topologia-vigilancia\docs\Topologia_Vigilancia_Maestro.xlsx"
+$jsonFile = "C:\Users\bamarilla\topologia-vigilancia\docs\data.json"
+
+$excel = New-Object -ComObject Excel.Application
+$excel.Visible = $false
+$workbook = $excel.Workbooks.Open($excelFile)
+
+$colores = @{
+    'CERRITO' = '#FFFFFF'
+    'San Juan' = '#FFFF00'
+    'Santa Cruz' = '#0070C0'
+    'Entre Rios' = '#FF0000'
+    'Santa Fe' = '#00B050'
+}
+
+$camaras = @()
+$nvrs = @()
+$equiposCerrito = @()
+$sucursales = @()
+$centralesRegionales = @()
+
+# Leer Cámaras
+$ws = $workbook.Sheets.Item("Camaras")
+$row = 2
+while ($ws.Cells.Item($row, 1).Value()) {
+    $camaras += @{
+        nombre = $ws.Cells.Item($row, 1).Value()
+        ip = $ws.Cells.Item($row, 2).Value()
+        modelo = $ws.Cells.Item($row, 3).Value()
+        sn = $ws.Cells.Item($row, 4).Value()
+        mac = $ws.Cells.Item($row, 5).Value()
+        firmware = $ws.Cells.Item($row, 6).Value()
+        conectada_a_nvr = $ws.Cells.Item($row, 7).Value()
+        region = $ws.Cells.Item($row, 8).Value()
+    }
+    $row++
+}
+
+# Leer NVRs
+$ws = $workbook.Sheets.Item("NVRs")
+$row = 2
+while ($ws.Cells.Item($row, 1).Value()) {
+    $nvrNombre = $ws.Cells.Item($row, 1).Value()
+    $cantidadCamaras = @($camaras | Where-Object { $_.conectada_a_nvr -eq $nvrNombre }).Count
+    
+    $nvrs += @{
+        nombre = $nvrNombre
+        ip = $ws.Cells.Item($row, 2).Value()
+        modelo = $ws.Cells.Item($row, 3).Value()
+        sn = $ws.Cells.Item($row, 4).Value()
+        mac = $ws.Cells.Item($row, 5).Value()
+        firmware = $ws.Cells.Item($row, 6).Value()
+        cantidad_camaras = [int]$cantidadCamaras
+        conectado_a = $ws.Cells.Item($row, 8).Value()
+        tipo_conexion = $ws.Cells.Item($row, 9).Value()
+        region = $ws.Cells.Item($row, 10).Value()
+    }
+    $row++
+}
+
+# Leer Equipos Cerrito
+$ws = $workbook.Sheets.Item("Equipos Cerrito")
+$row = 2
+while ($ws.Cells.Item($row, 1).Value()) {
+    $eqNombre = $ws.Cells.Item($row, 1).Value()
+    $cantidadCamaras = @($camaras | Where-Object { $_.conectada_a_nvr -eq $eqNombre }).Count
+    
+    $equiposCerrito += @{
+        nombre = $eqNombre
+        ip = $ws.Cells.Item($row, 2).Value()
+        modelo = $ws.Cells.Item($row, 3).Value()
+        sn = $ws.Cells.Item($row, 4).Value()
+        mac = $ws.Cells.Item($row, 5).Value()
+        firmware = $ws.Cells.Item($row, 6).Value()
+        cantidad_camaras = [int]$cantidadCamaras
+        region = $ws.Cells.Item($row, 8).Value()
+    }
+    $row++
+}
+
+# Leer Sucursales
+$ws = $workbook.Sheets.Item("Sucursales")
+$row = 2
+while ($ws.Cells.Item($row, 1).Value()) {
+    $sucNombre = $ws.Cells.Item($row, 1).Value()
+    $nvrsDelaSucursal = @($nvrs | Where-Object { $_.conectado_a -eq $sucNombre })
+    $cantidadNvrs = $nvrsDelaSucursal.Count
+    
+    $cantidadCamaras = 0
+    foreach ($nvr in $nvrsDelaSucursal) {
+        $cantidadCamaras += $nvr.cantidad_camaras
+    }
+    
+    $region = $ws.Cells.Item($row, 6).Value()
+    $color = $colores[$region]
+    
+    $sucursales += @{
+        nombre = $sucNombre
+        cantidad_nvr = $cantidadNvrs
+        cantidad_camaras = [int]$cantidadCamaras
+        tamaño_vinculo = $ws.Cells.Item($row, 4).Value()
+        conectada_a_central = $ws.Cells.Item($row, 5).Value()
+        region = $region
+        color = $color
+    }
+    $row++
+}
+
+# Leer Centrales Regionales
+$ws = $workbook.Sheets.Item("Centrales Regionales")
+$row = 2
+while ($ws.Cells.Item($row, 1).Value()) {
+    $centralNombre = $ws.Cells.Item($row, 1).Value()
+    $sucursalesDelaCentral = @($sucursales | Where-Object { $_.conectada_a_central -eq $centralNombre })
+    $cantidadSucursales = $sucursalesDelaCentral.Count
+    
+    $cantidadCamaras = 0
+    foreach ($sucursal in $sucursalesDelaCentral) {
+        $cantidadCamaras += $sucursal.cantidad_camaras
+    }
+    
+    $region = $ws.Cells.Item($row, 6).Value()
+    $color = $colores[$region]
+    
+    $centralesRegionales += @{
+        nombre = $centralNombre
+        ip = $ws.Cells.Item($row, 2).Value()
+        mac = $ws.Cells.Item($row, 3).Value()
+        cantidad_sucursales = $cantidadSucursales
+        cantidad_camaras = [int]$cantidadCamaras
+        region = $region
+        conectada_a_central_principal = $ws.Cells.Item($row, 7).Value()
+        color = $color
+    }
+    $row++
+}
+
+# Leer Central Principal
+$ws = $workbook.Sheets.Item("Central Principal")
+$totalCamarasCerrito = 0
+foreach ($eq in $equiposCerrito) {
+    $totalCamarasCerrito += $eq.cantidad_camaras
+}
+
+$totalCamarasRegionales = 0
+foreach ($central in $centralesRegionales) {
+    $totalCamarasRegionales += $central.cantidad_camaras
+}
+
+$centralPrincipal = @{
+    nombre = $ws.Cells.Item(2, 1).Value()
+    ip = $ws.Cells.Item(2, 2).Value()
+    mac = $ws.Cells.Item(2, 3).Value()
+    cantidad_nvr = $nvrs.Count
+    cantidad_centrales_conectadas = $centralesRegionales.Count
+    cantidad_camaras_totales = [int]($totalCamarasCerrito + $totalCamarasRegionales)
+    region = $ws.Cells.Item(2, 7).Value()
+    color = $colores['CERRITO']
+}
+
+$workbook.Close()
+$excel.Quit()
+
+$datos = @{
+    camaras = $camaras
+    nvrs = $nvrs
+    equipos_cerrito = $equiposCerrito
+    sucursales = $sucursales
+    centrales_regionales = $centralesRegionales
+    central_principal = $centralPrincipal
+}
+
+$json = $datos | ConvertTo-Json -Depth 10
+$json | Out-File -FilePath $jsonFile -Encoding UTF8
+
+Write-Host "✅ Conversion completada exitosamente!" -ForegroundColor Green
+Write-Host "📊 Resumen:" -ForegroundColor Green
+Write-Host "  - Camaras: $($camaras.Count)"
+Write-Host "  - NVRs: $($nvrs.Count)"
+Write-Host "  - Sucursales: $($sucursales.Count)"
+Write-Host "  - Centrales Regionales: $($centralesRegionales.Count)"
+Write-Host "  - Total de camaras: $($centralPrincipal.cantidad_camaras_totales)"
+Write-Host ""
+Write-Host "El archivo data.json ha sido actualizado en: $jsonFile" -ForegroundColor Green

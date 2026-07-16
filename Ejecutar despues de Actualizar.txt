@@ -1,0 +1,19 @@
+Después de ejecutar el script:
+Abre PowerShell en tu carpeta topologia-vigilancia
+Ejecuta:
+
+git add docs/data.json
+git commit -m "Actualizar datos desde Excel"
+git push
+
+
+
+
+
+
+Nota Importante
+La primera vez que ejecutes el script, PowerShell podría pedir permiso. Si ves un error de ejecución:
+Abre PowerShell como Administrador
+Ejecuta:
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
