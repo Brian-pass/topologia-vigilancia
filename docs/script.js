@@ -377,20 +377,22 @@ function llenarTopologia() {
 
         centralesDiv.appendChild(centralDiv);
 
-        // Agregar evento de click al título
-        const title = document.getElementById(titleId);
-        const listContainer = document.getElementById(listId);
+        // Agregar evento de click al título (usar querySelector en el contenedor)
+        const title = centralDiv.querySelector('#' + titleId);
+        const listContainer = centralDiv.querySelector('#' + listId);
         
-        title.addEventListener('click', function() {
-            if (listContainer.style.display === 'none') {
-                listContainer.style.display = 'block';
-                title.textContent = '▼ ' + central.nombre;
-                llenarSucursalesExpandibles(central.nombre, listContainer, coloresRegion);
-            } else {
-                listContainer.style.display = 'none';
-                title.textContent = '▶ ' + central.nombre;
-            }
-        });
+        if (title && listContainer) {
+            title.addEventListener('click', function() {
+                if (listContainer.style.display === 'none') {
+                    listContainer.style.display = 'block';
+                    title.textContent = '▼ ' + central.nombre;
+                    llenarSucursalesExpandibles(central.nombre, listContainer, coloresRegion);
+                } else {
+                    listContainer.style.display = 'none';
+                    title.textContent = '▶ ' + central.nombre;
+                }
+            });
+        }
     });
 
     container.appendChild(centralesDiv);
