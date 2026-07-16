@@ -318,20 +318,22 @@ function llenarTopologia() {
     cerritoDiv.appendChild(cerritoCard);
     container.appendChild(cerritoDiv);
     
-    // Agregar evento de click a Cerrito
-    const titleCerrito = document.getElementById(titleCerritoId);
-    const listCerrito = document.getElementById(listCerritoId);
+    // Agregar evento de click a Cerrito (usar querySelector en el contenedor)
+    const titleCerrito = cerritoCard.querySelector('#' + titleCerritoId);
+    const listCerrito = cerritoCard.querySelector('#' + listCerritoId);
     
-    titleCerrito.addEventListener('click', function() {
-        if (listCerrito.style.display === 'none') {
-            listCerrito.style.display = 'block';
-            titleCerrito.textContent = '▼ ' + centralPrincipal.nombre;
-            llenarEquiposCerritoExpandibles(listCerrito, coloresRegion);
-        } else {
-            listCerrito.style.display = 'none';
-            titleCerrito.textContent = '▶ ' + centralPrincipal.nombre;
-        }
-    });
+    if (titleCerrito && listCerrito) {
+        titleCerrito.addEventListener('click', function() {
+            if (listCerrito.style.display === 'none') {
+                listCerrito.style.display = 'block';
+                titleCerrito.textContent = '▼ ' + centralPrincipal.nombre;
+                llenarEquiposCerritoExpandibles(listCerrito, coloresRegion);
+            } else {
+                listCerrito.style.display = 'none';
+                titleCerrito.textContent = '▶ ' + centralPrincipal.nombre;
+            }
+        });
+    }
 
     // Centrales Regionales
     const centralesDiv = document.createElement('div');
