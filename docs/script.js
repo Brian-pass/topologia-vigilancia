@@ -269,7 +269,7 @@ function crearGraficoBarras() {
     });
 }
 
-// TOPOLOGÍA JERÁRQUICA EXPANDIBLE
+// TOPOLOGÍA JERÁRQUICA EXPANDIBLE - VERSIÓN SIMPLIFICADA
 function llenarTopologia() {
     const container = document.getElementById('topologyContainer');
     container.innerHTML = '';
@@ -282,8 +282,10 @@ function llenarTopologia() {
         'Santa Fe': '#00B050'
     };
 
-    // Central Principal (Cerrito) - Centro
+    // Central Principal (Cerrito) - EXPANDIBLE
     const centralPrincipal = datos.central_principal;
+    const totalCamarasCerrito = calcularCamarasCerrito();
+    
     const cerritoDiv = document.createElement('div');
     cerritoDiv.style.cssText = `
         text-align: center;
@@ -298,23 +300,40 @@ function llenarTopologia() {
         background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
         max-width: 300px;
         margin: 0 auto;
-        cursor: pointer;
         transition: all 0.3s ease;
     `;
     cerritoCard.onmouseover = () => cerritoCard.style.boxShadow = '0 8px 16px rgba(139, 0, 255, 0.3)';
     cerritoCard.onmouseout = () => cerritoCard.style.boxShadow = 'none';
     
-    const totalCamarasCerrito = calcularCamarasCerrito();
+    const titleCerritoId = 'title-cerrito';
+    const listCerritoId = 'list-cerrito';
+    
     cerritoCard.innerHTML = `
-        <h3 style="color: #8B00FF; margin: 0 0 10px 0;">${centralPrincipal.nombre}</h3>
+        <h3 id="${titleCerritoId}" style="color: #8B00FF; margin: 0 0 10px 0; cursor: pointer; user-select: none;">▶ ${centralPrincipal.nombre}</h3>
         <p style="margin: 5px 0;"><strong>IP:</strong> ${centralPrincipal.ip}</p>
         <p style="margin: 5px 0;"><strong>NVRs Locales:</strong> ${datos.equipos_cerrito.length}</p>
         <p style="margin: 5px 0;"><strong>Cámaras Locales:</strong> ${totalCamarasCerrito}</p>
+        <div id="${listCerritoId}" style="display: none; margin-top: 15px; border-top: 1px solid #ddd; padding-top: 15px;"></div>
     `;
     cerritoDiv.appendChild(cerritoCard);
     container.appendChild(cerritoDiv);
+    
+    // Agregar evento de click a Cerrito
+    const titleCerrito = document.getElementById(titleCerritoId);
+    const listCerrito = document.getElementById(listCerritoId);
+    
+    titleCerrito.addEventListener('click', function() {
+        if (listCerrito.style.display === 'none') {
+            listCerrito.style.display = 'block';
+            titleCerrito.textContent = '▼ ' + centralPrincipal.nombre;
+            llenarEquiposCerritoExpandibles(listCerrito, coloresRegion);
+        } else {
+            listCerrito.style.display = 'none';
+            titleCerrito.textContent = '▶ ' + centralPrincipal.nombre;
+        }
+    });
 
-    // Centrales Regionales - Lado a lado
+    // Centrales Regionales
     const centralesDiv = document.createElement('div');
     centralesDiv.style.cssText = `
         display: grid;
@@ -324,14 +343,14 @@ function llenarTopologia() {
         margin-top: 20px;
     `;
 
-    datos.centrales_regionales.forEach(central => {
+    datos.centrales_regionales.forEach((central, idx) => {
         const centralDiv = document.createElement('div');
+        centralDiv.id = 'central-' + idx;
         centralDiv.style.cssText = `
             border: 3px solid ${coloresRegion[central.region]};
             border-radius: 8px;
             padding: 20px;
             background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
-            cursor: pointer;
             transition: all 0.3s ease;
         `;
         centralDiv.onmouseover = () => centralDiv.style.boxShadow = `0 8px 16px rgba(${hexToRgb(coloresRegion[central.region])}, 0.3)`;
@@ -340,41 +359,36 @@ function llenarTopologia() {
         const cantidadSucursales = datos.sucursales.filter(s => s.conectada_a_central === central.nombre).length;
         const cantidadCamaras = calcularCamarasPorCentral(central.nombre);
 
-        const sucursalesListDiv = document.createElement('div');
-        sucursalesListDiv.className = 'sucursales-list';
-        sucursalesListDiv.style.cssText = `
-            display: none;
-            margin-top: 15px;
-            border-top: 1px solid #ddd;
-            padding-top: 15px;
-        `;
+        const titleId = 'title-central-' + idx;
+        const listId = 'list-central-' + idx;
 
         centralDiv.innerHTML = `
-            <h3 style="color: ${coloresRegion[central.region]}; margin: 0 0 10px 0; cursor: pointer;">
+            <h3 id="${titleId}" style="color: ${coloresRegion[central.region]}; margin: 0 0 10px 0; cursor: pointer; user-select: none;">
                 ▶ ${central.nombre}
             </h3>
             <p style="margin: 5px 0;"><strong>Región:</strong> ${central.region}</p>
             <p style="margin: 5px 0;"><strong>IP:</strong> ${central.ip}</p>
             <p style="margin: 5px 0;"><strong>Sucursales:</strong> ${cantidadSucursales}</p>
             <p style="margin: 5px 0;"><strong>Cámaras:</strong> ${cantidadCamaras}</p>
+            <div id="${listId}" style="display: none; margin-top: 15px; border-top: 1px solid #ddd; padding-top: 15px;"></div>
         `;
 
-        centralDiv.appendChild(sucursalesListDiv);
+        centralesDiv.appendChild(centralDiv);
 
-        // Agregar evento para expandir sucursales
-        const h3 = centralDiv.querySelector('h3');
-        h3.addEventListener('click', () => {
-            if (sucursalesListDiv.style.display === 'none') {
-                sucursalesListDiv.style.display = 'block';
-                h3.textContent = '▼ ' + central.nombre;
-                llenarSucursalesExpandibles(central.nombre, sucursalesListDiv, coloresRegion);
+        // Agregar evento de click al título
+        const title = document.getElementById(titleId);
+        const listContainer = document.getElementById(listId);
+        
+        title.addEventListener('click', function() {
+            if (listContainer.style.display === 'none') {
+                listContainer.style.display = 'block';
+                title.textContent = '▼ ' + central.nombre;
+                llenarSucursalesExpandibles(central.nombre, listContainer, coloresRegion);
             } else {
-                sucursalesListDiv.style.display = 'none';
-                h3.textContent = '▶ ' + central.nombre;
+                listContainer.style.display = 'none';
+                title.textContent = '▶ ' + central.nombre;
             }
         });
-
-        centralesDiv.appendChild(centralDiv);
     });
 
     container.appendChild(centralesDiv);
@@ -391,54 +405,48 @@ function llenarSucursalesExpandibles(nombreCentral, container, coloresRegion) {
     container.innerHTML = '';
     const sucursalesDelaCentral = datos.sucursales.filter(s => s.conectada_a_central === nombreCentral);
 
-    sucursalesDelaCentral.forEach(sucursal => {
+    sucursalesDelaCentral.forEach((sucursal, idx) => {
+        const nvrCount = datos.nvrs.filter(n => n.conectado_a === sucursal.nombre).length;
+        
+        const titleId = 'title-sucursal-' + nombreCentral + '-' + idx;
+        const listId = 'list-sucursal-' + nombreCentral + '-' + idx;
+
         const sucursalDiv = document.createElement('div');
         sucursalDiv.style.cssText = `
             border-left: 3px solid ${coloresRegion[sucursal.region]};
-            padding-left: 10px;
-            margin-bottom: 10px;
-            cursor: pointer;
             padding: 10px;
+            margin-bottom: 10px;
             background: #f9f9f9;
             border-radius: 4px;
         `;
 
-        const nvrCount = datos.nvrs.filter(n => n.conectado_a === sucursal.nombre).length;
-        
-        const nvrListDiv = document.createElement('div');
-        nvrListDiv.className = 'nvrs-list';
-        nvrListDiv.style.cssText = `
-            display: none;
-            margin-top: 10px;
-            border-top: 1px solid #ddd;
-            padding-top: 10px;
-        `;
-
         sucursalDiv.innerHTML = `
-            <div style="cursor: pointer; font-weight: bold; color: ${coloresRegion[sucursal.region]};">
+            <div id="${titleId}" style="cursor: pointer; font-weight: bold; color: ${coloresRegion[sucursal.region]}; user-select: none;">
                 ▶ ${sucursal.nombre}
             </div>
             <div style="margin-top: 5px; font-size: 0.9em;">
                 <p style="margin: 2px 0;"><strong>NVRs:</strong> ${nvrCount}</p>
                 <p style="margin: 2px 0;"><strong>Cámaras:</strong> ${sucursal.cantidad_camaras || 0}</p>
             </div>
+            <div id="${listId}" style="display: none; margin-top: 10px; border-top: 1px solid #ddd; padding-top: 10px;"></div>
         `;
 
-        sucursalDiv.appendChild(nvrListDiv);
+        container.appendChild(sucursalDiv);
 
-        const toggleSucursal = sucursalDiv.querySelector('div:first-child');
-        toggleSucursal.addEventListener('click', () => {
-            if (nvrListDiv.style.display === 'none') {
-                nvrListDiv.style.display = 'block';
-                toggleSucursal.textContent = '▼ ' + sucursal.nombre;
-                llenarNvrsExpandibles(sucursal.nombre, nvrListDiv, coloresRegion);
+        // Agregar evento de click
+        const title = document.getElementById(titleId);
+        const listContainer = document.getElementById(listId);
+        
+        title.addEventListener('click', function() {
+            if (listContainer.style.display === 'none') {
+                listContainer.style.display = 'block';
+                title.textContent = '▼ ' + sucursal.nombre;
+                llenarNvrsExpandibles(sucursal.nombre, listContainer, coloresRegion);
             } else {
-                nvrListDiv.style.display = 'none';
-                toggleSucursal.textContent = '▶ ' + sucursal.nombre;
+                listContainer.style.display = 'none';
+                title.textContent = '▶ ' + sucursal.nombre;
             }
         });
-
-        container.appendChild(sucursalDiv);
     });
 }
 
@@ -447,54 +455,48 @@ function llenarNvrsExpandibles(nombreSucursal, container, coloresRegion) {
     container.innerHTML = '';
     const nvrsDelaSucursal = datos.nvrs.filter(n => n.conectado_a === nombreSucursal);
 
-    nvrsDelaSucursal.forEach(nvr => {
+    nvrsDelaSucursal.forEach((nvr, idx) => {
+        const camarasCount = datos.camaras.filter(c => c.conectada_a_nvr === nvr.nombre).length;
+        
+        const titleId = 'title-nvr-' + nombreSucursal + '-' + idx;
+        const listId = 'list-nvr-' + nombreSucursal + '-' + idx;
+
         const nvrDiv = document.createElement('div');
         nvrDiv.style.cssText = `
             border-left: 3px solid #666;
-            padding-left: 10px;
-            margin-bottom: 8px;
-            cursor: pointer;
             padding: 8px;
+            margin-bottom: 8px;
             background: #f0f0f0;
             border-radius: 4px;
         `;
 
-        const camarasCount = datos.camaras.filter(c => c.conectada_a_nvr === nvr.nombre).length;
-        
-        const camarasListDiv = document.createElement('div');
-        camarasListDiv.className = 'camaras-list';
-        camarasListDiv.style.cssText = `
-            display: none;
-            margin-top: 8px;
-            border-top: 1px solid #ddd;
-            padding-top: 8px;
-        `;
-
         nvrDiv.innerHTML = `
-            <div style="cursor: pointer; font-weight: bold; color: #333;">
+            <div id="${titleId}" style="cursor: pointer; font-weight: bold; color: #333; user-select: none;">
                 ▶ ${nvr.nombre}
             </div>
             <div style="margin-top: 5px; font-size: 0.85em;">
                 <p style="margin: 2px 0;"><strong>IP:</strong> ${nvr.ip}</p>
                 <p style="margin: 2px 0;"><strong>Cámaras:</strong> ${camarasCount}</p>
             </div>
+            <div id="${listId}" style="display: none; margin-top: 8px; border-top: 1px solid #ddd; padding-top: 8px;"></div>
         `;
 
-        nvrDiv.appendChild(camarasListDiv);
+        container.appendChild(nvrDiv);
 
-        const toggleNvr = nvrDiv.querySelector('div:first-child');
-        toggleNvr.addEventListener('click', () => {
-            if (camarasListDiv.style.display === 'none') {
-                camarasListDiv.style.display = 'block';
-                toggleNvr.textContent = '▼ ' + nvr.nombre;
-                llenarCamarasExpandibles(nvr.nombre, camarasListDiv);
+        // Agregar evento de click
+        const title = document.getElementById(titleId);
+        const listContainer = document.getElementById(listId);
+        
+        title.addEventListener('click', function() {
+            if (listContainer.style.display === 'none') {
+                listContainer.style.display = 'block';
+                title.textContent = '▼ ' + nvr.nombre;
+                llenarCamarasExpandibles(nvr.nombre, listContainer);
             } else {
-                camarasListDiv.style.display = 'none';
-                toggleNvr.textContent = '▶ ' + nvr.nombre;
+                listContainer.style.display = 'none';
+                title.textContent = '▶ ' + nvr.nombre;
             }
         });
-
-        container.appendChild(nvrDiv);
     });
 }
 
@@ -507,9 +509,8 @@ function llenarCamarasExpandibles(nombreNvr, container) {
         const camaraDiv = document.createElement('div');
         camaraDiv.style.cssText = `
             border-left: 3px solid #999;
-            padding-left: 10px;
-            margin-bottom: 6px;
             padding: 6px;
+            margin-bottom: 6px;
             background: #efefef;
             border-radius: 3px;
             font-size: 0.85em;
@@ -575,6 +576,87 @@ function llenarTabla() {
     if (searchInput) {
         searchInput.addEventListener('keyup', filtrarTabla);
     }
+}
+
+// Función para llenar equipos locales de Cerrito expandibles
+function llenarEquiposCerritoExpandibles(container, coloresRegion) {
+    container.innerHTML = '';
+    
+    datos.equipos_cerrito.forEach((equipo, idx) => {
+        const titleId = 'title-equipo-' + idx;
+        const listId = 'list-equipo-' + idx;
+        
+        const equipoDiv = document.createElement('div');
+        equipoDiv.style.cssText = `
+            border-left: 3px solid #8B00FF;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        `;
+        
+        const camarasCount = equipo.cantidad_camaras || 0;
+        
+        equipoDiv.innerHTML = `
+            <div id="${titleId}" style="cursor: pointer; font-weight: bold; color: #8B00FF; user-select: none;">
+                ▶ ${equipo.nombre}
+            </div>
+            <div style="margin-top: 5px; font-size: 0.9em;">
+                <p style="margin: 2px 0;"><strong>IP:</strong> ${equipo.ip}</p>
+                <p style="margin: 2px 0;"><strong>Cámaras:</strong> ${camarasCount}</p>
+            </div>
+            <div id="${listId}" style="display: none; margin-top: 10px; border-top: 1px solid #ddd; padding-top: 10px;"></div>
+        `;
+        
+        container.appendChild(equipoDiv);
+        
+        // Agregar evento de click
+        const title = document.getElementById(titleId);
+        const listContainer = document.getElementById(listId);
+        
+        title.addEventListener('click', function() {
+            if (listContainer.style.display === 'none') {
+                listContainer.style.display = 'block';
+                title.textContent = '▼ ' + equipo.nombre;
+                llenarCamarasEquipoCerrito(equipo.nombre, listContainer);
+            } else {
+                listContainer.style.display = 'none';
+                title.textContent = '▶ ' + equipo.nombre;
+            }
+        });
+    });
+}
+
+// Función para llenar cámaras de equipos de Cerrito
+function llenarCamarasEquipoCerrito(nombreEquipo, container) {
+    container.innerHTML = '';
+    const camarasDelEquipo = datos.camaras.filter(c => c.conectada_a_nvr === nombreEquipo);
+    
+    if (camarasDelEquipo.length === 0) {
+        container.innerHTML = '<p style="color: #999; font-size: 0.9em;">Sin cámaras conectadas</p>';
+        return;
+    }
+    
+    camarasDelEquipo.forEach(camara => {
+        const camaraDiv = document.createElement('div');
+        camaraDiv.style.cssText = `
+            border-left: 3px solid #999;
+            padding: 6px;
+            margin-bottom: 6px;
+            background: #efefef;
+            border-radius: 3px;
+            font-size: 0.85em;
+        `;
+        
+        camaraDiv.innerHTML = `
+            <p style="margin: 2px 0; font-weight: bold;">${camara.nombre}</p>
+            <p style="margin: 2px 0;"><strong>IP:</strong> ${camara.ip}</p>
+            <p style="margin: 2px 0;"><strong>Modelo:</strong> ${camara.modelo}</p>
+            <p style="margin: 2px 0;"><strong>MAC:</strong> ${camara.mac}</p>
+        `;
+        
+        container.appendChild(camaraDiv);
+    });
 }
 
 // Filtrar tabla de búsqueda
