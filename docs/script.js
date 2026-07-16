@@ -17,7 +17,7 @@ async function cargarDatos() {
 // Configurar funcionalidad de tabs
 function configurarTabs() {
     const tabButtons = document.querySelectorAll('.tab-button');
-    const tabPanes = document.querySelectorAll('.tab-pane');
+    const tabPanes = document.querySelectorAll('.tab-content');
     
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -269,14 +269,10 @@ function crearGraficoBarras() {
     });
 }
 
-// NUEVA TOPOLOGÍA JERÁRQUICA EXPANDIBLE
+// TOPOLOGÍA JERÁRQUICA EXPANDIBLE
 function llenarTopologia() {
     const container = document.getElementById('topologyContainer');
     container.innerHTML = '';
-    container.style.display = 'flex';
-    container.style.flexDirection = 'column';
-    container.style.alignItems = 'center';
-    container.style.gap = '30px';
 
     const coloresRegion = {
         'CERRITO': '#8B00FF',
@@ -289,8 +285,10 @@ function llenarTopologia() {
     // Central Principal (Cerrito) - Centro
     const centralPrincipal = datos.central_principal;
     const cerritoDiv = document.createElement('div');
-    cerritoDiv.style.textAlign = 'center';
-    cerritoDiv.style.marginBottom = '40px';
+    cerritoDiv.style.cssText = `
+        text-align: center;
+        margin-bottom: 40px;
+    `;
     
     const cerritoCard = document.createElement('div');
     cerritoCard.style.cssText = `
@@ -299,6 +297,7 @@ function llenarTopologia() {
         padding: 20px;
         background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
         max-width: 300px;
+        margin: 0 auto;
         cursor: pointer;
         transition: all 0.3s ease;
     `;
@@ -341,28 +340,37 @@ function llenarTopologia() {
         const cantidadSucursales = datos.sucursales.filter(s => s.conectada_a_central === central.nombre).length;
         const cantidadCamaras = calcularCamarasPorCentral(central.nombre);
 
+        const sucursalesListDiv = document.createElement('div');
+        sucursalesListDiv.className = 'sucursales-list';
+        sucursalesListDiv.style.cssText = `
+            display: none;
+            margin-top: 15px;
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+        `;
+
         centralDiv.innerHTML = `
-            <h3 style="color: ${coloresRegion[central.region]}; margin: 0 0 10px 0; cursor: pointer;" class="toggle-central" data-central="${central.nombre}">
+            <h3 style="color: ${coloresRegion[central.region]}; margin: 0 0 10px 0; cursor: pointer;">
                 ▶ ${central.nombre}
             </h3>
             <p style="margin: 5px 0;"><strong>Región:</strong> ${central.region}</p>
             <p style="margin: 5px 0;"><strong>IP:</strong> ${central.ip}</p>
             <p style="margin: 5px 0;"><strong>Sucursales:</strong> ${cantidadSucursales}</p>
             <p style="margin: 5px 0;"><strong>Cámaras:</strong> ${cantidadCamaras}</p>
-            <div class="sucursales-list" data-central="${central.nombre}" style="display: none; margin-top: 15px; border-top: 1px solid #ddd; padding-top: 15px;"></div>
         `;
 
+        centralDiv.appendChild(sucursalesListDiv);
+
         // Agregar evento para expandir sucursales
-        const toggle = centralDiv.querySelector('.toggle-central');
-        toggle.addEventListener('click', () => {
-            const sucursalesList = centralDiv.querySelector('.sucursales-list');
-            if (sucursalesList.style.display === 'none') {
-                sucursalesList.style.display = 'block';
-                toggle.textContent = '▼ ' + central.nombre;
-                llenarSucursalesExpandibles(central.nombre, sucursalesList, coloresRegion);
+        const h3 = centralDiv.querySelector('h3');
+        h3.addEventListener('click', () => {
+            if (sucursalesListDiv.style.display === 'none') {
+                sucursalesListDiv.style.display = 'block';
+                h3.textContent = '▼ ' + central.nombre;
+                llenarSucursalesExpandibles(central.nombre, sucursalesListDiv, coloresRegion);
             } else {
-                sucursalesList.style.display = 'none';
-                toggle.textContent = '▶ ' + central.nombre;
+                sucursalesListDiv.style.display = 'none';
+                h3.textContent = '▶ ' + central.nombre;
             }
         });
 
@@ -396,26 +404,36 @@ function llenarSucursalesExpandibles(nombreCentral, container, coloresRegion) {
         `;
 
         const nvrCount = datos.nvrs.filter(n => n.conectado_a === sucursal.nombre).length;
+        
+        const nvrListDiv = document.createElement('div');
+        nvrListDiv.className = 'nvrs-list';
+        nvrListDiv.style.cssText = `
+            display: none;
+            margin-top: 10px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        `;
+
         sucursalDiv.innerHTML = `
-            <div style="cursor: pointer; font-weight: bold; color: ${coloresRegion[sucursal.region]};" class="toggle-sucursal" data-sucursal="${sucursal.nombre}">
+            <div style="cursor: pointer; font-weight: bold; color: ${coloresRegion[sucursal.region]};">
                 ▶ ${sucursal.nombre}
             </div>
             <div style="margin-top: 5px; font-size: 0.9em;">
                 <p style="margin: 2px 0;"><strong>NVRs:</strong> ${nvrCount}</p>
                 <p style="margin: 2px 0;"><strong>Cámaras:</strong> ${sucursal.cantidad_camaras || 0}</p>
             </div>
-            <div class="nvrs-list" data-sucursal="${sucursal.nombre}" style="display: none; margin-top: 10px; border-top: 1px solid #ddd; padding-top: 10px;"></div>
         `;
 
-        const toggleSucursal = sucursalDiv.querySelector('.toggle-sucursal');
+        sucursalDiv.appendChild(nvrListDiv);
+
+        const toggleSucursal = sucursalDiv.querySelector('div:first-child');
         toggleSucursal.addEventListener('click', () => {
-            const nvrsList = sucursalDiv.querySelector('.nvrs-list');
-            if (nvrsList.style.display === 'none') {
-                nvrsList.style.display = 'block';
+            if (nvrListDiv.style.display === 'none') {
+                nvrListDiv.style.display = 'block';
                 toggleSucursal.textContent = '▼ ' + sucursal.nombre;
-                llenarNvrsExpandibles(sucursal.nombre, nvrsList, coloresRegion);
+                llenarNvrsExpandibles(sucursal.nombre, nvrListDiv, coloresRegion);
             } else {
-                nvrsList.style.display = 'none';
+                nvrListDiv.style.display = 'none';
                 toggleSucursal.textContent = '▶ ' + sucursal.nombre;
             }
         });
@@ -442,26 +460,36 @@ function llenarNvrsExpandibles(nombreSucursal, container, coloresRegion) {
         `;
 
         const camarasCount = datos.camaras.filter(c => c.conectada_a_nvr === nvr.nombre).length;
+        
+        const camarasListDiv = document.createElement('div');
+        camarasListDiv.className = 'camaras-list';
+        camarasListDiv.style.cssText = `
+            display: none;
+            margin-top: 8px;
+            border-top: 1px solid #ddd;
+            padding-top: 8px;
+        `;
+
         nvrDiv.innerHTML = `
-            <div style="cursor: pointer; font-weight: bold; color: #333;" class="toggle-nvr" data-nvr="${nvr.nombre}">
+            <div style="cursor: pointer; font-weight: bold; color: #333;">
                 ▶ ${nvr.nombre}
             </div>
             <div style="margin-top: 5px; font-size: 0.85em;">
                 <p style="margin: 2px 0;"><strong>IP:</strong> ${nvr.ip}</p>
                 <p style="margin: 2px 0;"><strong>Cámaras:</strong> ${camarasCount}</p>
             </div>
-            <div class="camaras-list" data-nvr="${nvr.nombre}" style="display: none; margin-top: 8px; border-top: 1px solid #ddd; padding-top: 8px;"></div>
         `;
 
-        const toggleNvr = nvrDiv.querySelector('.toggle-nvr');
+        nvrDiv.appendChild(camarasListDiv);
+
+        const toggleNvr = nvrDiv.querySelector('div:first-child');
         toggleNvr.addEventListener('click', () => {
-            const camarasList = nvrDiv.querySelector('.camaras-list');
-            if (camarasList.style.display === 'none') {
-                camarasList.style.display = 'block';
+            if (camarasListDiv.style.display === 'none') {
+                camarasListDiv.style.display = 'block';
                 toggleNvr.textContent = '▼ ' + nvr.nombre;
-                llenarCamarasExpandibles(nvr.nombre, camarasList);
+                llenarCamarasExpandibles(nvr.nombre, camarasListDiv);
             } else {
-                camarasList.style.display = 'none';
+                camarasListDiv.style.display = 'none';
                 toggleNvr.textContent = '▶ ' + nvr.nombre;
             }
         });
